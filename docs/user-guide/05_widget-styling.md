@@ -76,6 +76,7 @@ Jupyter 交互式小部件有一个 `layout` 属性，它暴露了许多影响�
 - `align_content`
 - `justify_content`
 
+(jupyter:widget-styling/grid-layout)=
 #### Grid layout
 
 - `grid_auto_columns`
