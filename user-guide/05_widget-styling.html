@@ -1,0 +1,1771 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>布局和样式 &#8212; 品味人生</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "xinetzone/ipywidgets-book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="测试" href="test.html" />
+    <link rel="prev" title="小部件事件" href="04_widget-events.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">品味人生</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  教程
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   用户手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_install.html">
+     安装
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_intro.html">
+     简单的小部件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_widgets-list.html">
+     小部件清单
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_output-widget.html">
+     Output 小部件：利用 Jupyter 的显示系统
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_widget-events.html">
+     小部件事件
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     布局和样式
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test.html">
+     测试
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  附录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faqs.html">
+   常见问题
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="w3-padding w3-card-4 w3-pale-green">
+  <a href="https://github.com/xinetzone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+      data-position="top" data-delay="50">
+      <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:q735613050@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top"
+      data-delay="50">
+      <i class="fas fa-envelope-open"></i>
+  </a>
+  <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=735613050" class="tooltipped"
+      target="_blank" data-tooltip="QQ联系我: 735613050" data-position="top" data-delay="50">
+      <i class="fab fa-qq"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/liu-xin-wei-55" class="tooltipped" target="_blank"
+      data-tooltip="关注我的知乎: liu-xin-wei-55" data-position="top" data-delay="50">
+      <i class="fab fa-zhihu1">知</i>
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xinet" class="tooltipped"
+      data-tooltip="领英联系我: xinet" data-position="top" data-delay="50">
+      <i class="fab fa-linkedin"></i>
+  </a>
+  <div><a href="https://github.com/xinetzone/ipywidgets-book">Jupyter Book</a> 版权所有</div>
+</div> 
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/user-guide/05_widget-styling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/user-guide/05_widget-styling.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/xinetzone/ipywidgets-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/xinetzone/ipywidgets-book/issues/new?title=Issue%20on%20page%20%2Fuser-guide/05_widget-styling.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/xinetzone/ipywidgets-book/main?urlpath=tree/docs/user-guide/05_widget-styling.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#layout">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     layout
+    </span>
+   </code>
+   属性
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#css">
+     暴露的 CSS 属性
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sizes">
+       Sizes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#display">
+       Display
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#box-model">
+       Box model
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#positioning">
+       Positioning
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flexbox">
+       Flexbox
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#grid-layout">
+       Grid layout
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     速记 CSS 属性
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     简单例子
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#description">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       description
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hbox-vbox">
+     自然大小，并使用
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       HBox
+      </span>
+     </code>
+     和
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       VBox
+      </span>
+     </code>
+     安排
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#latex">
+     Latex
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     数字格式化属性
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   Flexbox 布局
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     致谢
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     基础和术语
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#properties-of-the-parent">
+     Properties of the parent
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       display
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flex-flow">
+       flex-flow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#justify-content">
+       justify-content
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#align-items">
+       align-items
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#align-content">
+       align-content
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#properties-of-the-items">
+     Properties of the items
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order">
+       order
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flex">
+       flex
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#align-self">
+       align-self
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-vbox-and-hbox-helpers">
+     The VBox and HBox helpers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     例子
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       一个更高级的例子：响应式表单
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       一个更高级的例子：旋转木马。
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     预定义的风格
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#style">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       style
+      </span>
+     </code>
+     属性
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   网格布局
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basics-and-browser-support">
+     Basics and browser support
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-terminology">
+     Important terminology
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Properties of the parent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     Properties of the items
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#image-layout-and-sizing">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Image
+    </span>
+   </code>
+   layout and sizing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#controlling-the-display-of-an-image-inside-a-container">
+     Controlling the display of an
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Image
+      </span>
+     </code>
+     inside a container
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-object-fit">
+     Examples of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_fit
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#object-fit-box">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_fit
+      </span>
+     </code>
+     在一个比原始图像小的
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Box
+      </span>
+     </code>
+     中
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_fit
+      </span>
+     </code>
+     在一个比原始图像大的
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Box
+      </span>
+     </code>
+     中
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#object-fit-in-a-box-larger-than-the-original-image-use-image-layout-width-100-to-fill-container">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_fit
+      </span>
+     </code>
+     in a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Box
+      </span>
+     </code>
+     larger than the original image: use image layout width
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       100%
+      </span>
+     </code>
+     to fill container
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-object-position">
+     Examples of
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_position
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-object-position-with-keywords">
+     Specifying
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_position
+      </span>
+     </code>
+     with keywords
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-object-position-with-offsets-in-pixels">
+     Specifying
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_position
+      </span>
+     </code>
+     with offsets in pixels
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#specifying-object-position-with-offsets-as-a-percentage">
+     Specifying
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       object_position
+      </span>
+     </code>
+     with offsets as a percentage
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="widget-styling">
+<span id="id1"></span><h1>布局和样式<a class="headerlink" href="#widget-styling" title="永久链接至标题">¶</a></h1>
+<p>参考：<a class="reference external" href="https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Styling.html#The-Flexbox-layout">Layout and Styling of Jupyter widgets</a></p>
+<p>本笔记本介绍了如何布局和样式的 Jupyter 交互式小部件，以构建丰富的和反应性的基于小部件的应用程序。</p>
+<p>你可以直接跳转到以下部分：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#The-layout-attribute">The <code class="docutils literal notranslate"><span class="pre">layout</span></code> attribute</a></p></li>
+<li><p><a class="reference external" href="#The-Flexbox-layout">The Flexbox layout</a></p></li>
+<li><p><a class="reference external" href="#Predefined-styles">Predefined styles</a></p></li>
+<li><p><a class="reference external" href="#The-style-attribute">The <code class="docutils literal notranslate"><span class="pre">style</span></code> attribute</a></p></li>
+<li><p><a class="reference external" href="#The-Grid-layout">The Grid layout</a></p></li>
+<li><p><a class="reference external" href="#Image-layout-and-sizing">Image layout and sizing</a></p></li>
+</ul>
+<div class="section" id="layout">
+<h2><code class="docutils literal notranslate"><span class="pre">layout</span></code> 属性<a class="headerlink" href="#layout" title="永久链接至标题">¶</a></h2>
+<p>Jupyter 交互式小部件有一个 <code class="docutils literal notranslate"><span class="pre">layout</span></code> 属性，它暴露了许多影响小部件布局方式的 CSS 属性。</p>
+<div class="section" id="css">
+<h3>暴露的 CSS 属性<a class="headerlink" href="#css" title="永久链接至标题">¶</a></h3>
+<div class="class-alert alert-info style-margin px docutils">
+<p>以下属性映射到同名的 CSS 属性值（下划线被破折号替换），这些属性应用于相应小部件的顶级 DOM 元素。</p>
+</div>
+<div class="section" id="sizes">
+<h4>Sizes<a class="headerlink" href="#sizes" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">height</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_height</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_width</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_height</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_width</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="display">
+<h4>Display<a class="headerlink" href="#display" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">visibility</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">display</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overflow</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="box-model">
+<h4>Box model<a class="headerlink" href="#box-model" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">border</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">margin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">padding</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="positioning">
+<h4>Positioning<a class="headerlink" href="#positioning" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">top</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bottom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">right</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="flexbox">
+<h4>Flexbox<a class="headerlink" href="#flexbox" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">order</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex_flow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">align_items</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">align_self</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">align_content</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">justify_content</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="grid-layout">
+<h4>Grid layout<a class="headerlink" href="#grid-layout" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_auto_columns</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_auto_flow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_auto_rows</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_gap</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_template</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_row</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">grid_column</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>速记 CSS 属性<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p>可能已经注意到某些 CSS 属性，如 <code class="docutils literal notranslate"><span class="pre">margin-[top/right/bottom/left]</span></code> 似乎缺失了。同样适用于 <code class="docutils literal notranslate"><span class="pre">padding-[top/right/bottom/left]</span></code> 等。</p>
+<p>事实上，你可以自动指定 <code class="docutils literal notranslate"><span class="pre">[top/right/bottom/left]</span></code> 的 <code class="docutils literal notranslate"><span class="pre">margin</span></code> 属性，通过传递字符串 <code class="docutils literal notranslate"><span class="pre">'100px</span> <span class="pre">150px</span> <span class="pre">100px</span> <span class="pre">80px'</span></code>，分别为 <code class="docutils literal notranslate"><span class="pre">top</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, <code class="docutils literal notranslate"><span class="pre">bottom</span></code> 和 <code class="docutils literal notranslate"><span class="pre">left</span></code> margin 为 <code class="docutils literal notranslate"><span class="pre">100</span></code>, <code class="docutils literal notranslate"><span class="pre">150</span></code>, <code class="docutils literal notranslate"><span class="pre">100</span></code> 和 <code class="docutils literal notranslate"><span class="pre">80</span></code> 像素。</p>
+<p>类似地，<code class="docutils literal notranslate"><span class="pre">flex</span></code> 属性可以保存 <code class="docutils literal notranslate"><span class="pre">flex-grow</span></code>、<code class="docutils literal notranslate"><span class="pre">flex-shrink</span></code> 和 <code class="docutils literal notranslate"><span class="pre">flex-basis</span></code> 的值。<code class="docutils literal notranslate"><span class="pre">border</span></code> 属性是 <code class="docutils literal notranslate"><span class="pre">border-width</span></code>、<code class="docutils literal notranslate"><span class="pre">border-style</span></code>（必需的）和 <code class="docutils literal notranslate"><span class="pre">border-color</span></code> 的简写属性。</p>
+</div>
+<div class="section" id="id3">
+<h3>简单例子<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>下面的例子展示了如何调整一个 <code class="docutils literal notranslate"><span class="pre">Button</span></code> 的大小，使其视图的高度为 <code class="docutils literal notranslate"><span class="pre">80px</span></code>，宽度为可用空间的 <code class="docutils literal notranslate"><span class="pre">50%</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Layout</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;(50% width, 80px height) button&#39;</span><span class="p">,</span>
+           <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;80px&#39;</span><span class="p">))</span>
+<span class="n">b</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Button(description=&#39;(50% width, 80px height) button&#39;, layout=Layout(height=&#39;80px&#39;, width=&#39;50%&#39;), style=ButtonS…
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">layout</span></code> 属性可以在多个小部件之间共享并直接分配。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Another button with the same layout&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Button(description=&#39;Another button with the same layout&#39;, layout=Layout(height=&#39;80px&#39;, width=&#39;50%&#39;), style=But…
+</pre></div>
+</div>
+</div>
+<div class="section" id="description">
+<h3><code class="docutils literal notranslate"><span class="pre">description</span></code><a class="headerlink" href="#description" title="永久链接至标题">¶</a></h3>
+<p>您可能已经注意到，较长的描述会被截断。这是因为描述长度在默认情况下是固定的。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">IntSlider</span>
+
+<span class="n">IntSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;A too long description&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IntSlider(value=0, description=&#39;A too long description&#39;)
+</pre></div>
+</div>
+<p>您可以更改描述的长度以适应描述文本。但是，这将使小部件本身更短。您可以通过使用小部件的样式调整描述宽度和小部件宽度来改变这两者。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="n">IntSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;A too long description&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IntSlider(value=0, description=&#39;A too long description&#39;, style=SliderStyle(description_width=&#39;initial&#39;))
+</pre></div>
+</div>
+<p>如果您需要更灵活的布局小部件和描述，您可以直接使用 <code class="docutils literal notranslate"><span class="pre">Label</span></code> 小部件。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">Label</span>
+
+<span class="n">HBox</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="s1">&#39;A too long description&#39;</span><span class="p">),</span> <span class="n">IntSlider</span><span class="p">()])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HBox(children=(Label(value=&#39;A too long description&#39;), IntSlider(value=0)))
+</pre></div>
+</div>
+</div>
+<div class="section" id="hbox-vbox">
+<h3>自然大小，并使用 <code class="docutils literal notranslate"><span class="pre">HBox</span></code> 和 <code class="docutils literal notranslate"><span class="pre">VBox</span></code> 安排<a class="headerlink" href="#hbox-vbox" title="永久链接至标题">¶</a></h3>
+<p>大多数核心小部件的默认高度和宽度都平铺在一起。这允许基于 <code class="docutils literal notranslate"><span class="pre">HBox</span></code> 和 <code class="docutils literal notranslate"><span class="pre">VBox</span></code> 助手函数的简单布局自然对齐：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Button</span><span class="p">,</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">VBox</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;correct&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;battery&#39;</span><span class="p">,</span> <span class="s1">&#39;staple&#39;</span><span class="p">]</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+<span class="n">left_box</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">right_box</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">([</span><span class="n">items</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">items</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">HBox</span><span class="p">([</span><span class="n">left_box</span><span class="p">,</span> <span class="n">right_box</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>HBox(children=(VBox(children=(Button(description=&#39;correct&#39;, style=ButtonStyle()), Button(description=&#39;horse&#39;, …
+</pre></div>
+</div>
+</div>
+<div class="section" id="latex">
+<h3>Latex<a class="headerlink" href="#latex" title="永久链接至标题">¶</a></h3>
+<p>小部件（如滑块和文本输入）有一个描述属性，可以呈现 Latex 方程。<code class="docutils literal notranslate"><span class="pre">Label</span></code> 小部件还显示 Latex 方程。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">Label</span>
+
+<span class="n">IntSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\(\int_0^t f\)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IntSlider(value=0, description=&#39;\\(\\int_0^t f\\)&#39;)
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\(e=mc^2\)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Label(value=&#39;\\(e=mc^2\\)&#39;)
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>数字格式化属性<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>滑块有一个 <code class="docutils literal notranslate"><span class="pre">readout</span></code> 字段，可以使用 Python 的 <a class="reference external" href="https://docs.python.org/3/library/string.html#format-specification-mini-language">格式规范迷你语言进行格式化</a>。如果可用的读取空间对于滑块值的字符串表示来说太窄，则应用不同的样式来显示并非所有数字都可见。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Flexbox 布局<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>上面的 <code class="docutils literal notranslate"><span class="pre">HBox</span></code> 和 <code class="docutils literal notranslate"><span class="pre">VBox</span></code> 类是 <code class="docutils literal notranslate"><span class="pre">Box</span></code> 小部件的特殊情况。</p>
+<p><code class="docutils literal notranslate"><span class="pre">Box</span></code> 小部件支持整个 CSS flexbox 规范和 Grid 布局规范，在 Jupyter 笔记本中支持丰富的响应式布局。它的目的是提供一种有效的方式来布局，对齐和分配空间之间的项目在一个容器。</p>
+<div class="section" id="id6">
+<h3>致谢<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>以下关于 flexbox 布局的 flexbox 教程遵循 Chris Coyier 的文章 <a class="reference external" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to flexbox</a> 的行，并使用文本和各种图片<a class="reference external" href="https://css-tricks.com/license/">从文章的许可</a>。</p>
+</div>
+<div class="section" id="id7">
+<h3>基础和术语<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>因为 flexbox 是一个完整的模块，而不是一个单独的属性，所以它涉及到很多东西，包括它的整个属性集。其中一些是在容器上设置(父元素，称为“flex container”)，而其他的是在子元素上设置(称为“flex items”)。</p>
+<p>If regular layout is based on both block and inline flow directions, the flex layout is based on &quot;flex-flow directions&quot;. Please have a look at this figure from the specification, explaining the main idea behind the flex layout.</p>
+<p><img alt="Flexbox" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/flexbox.png" /></p>
+<p>Basically, items will be laid out following either the <code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">axis</span></code> (from <code class="docutils literal notranslate"><span class="pre">main-start</span></code> to <code class="docutils literal notranslate"><span class="pre">main-end</span></code>) or the <code class="docutils literal notranslate"><span class="pre">cross</span> <span class="pre">axis</span></code> (from <code class="docutils literal notranslate"><span class="pre">cross-start</span></code> to <code class="docutils literal notranslate"><span class="pre">cross-end</span></code>).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">axis</span></code> - The main axis of a flex container is the primary axis along which flex items are laid out. Beware, it is not necessarily horizontal; it depends on the flex-direction property (see below).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main-start</span> <span class="pre">|</span> <span class="pre">main-end</span></code> - The flex items are placed within the container starting from main-start and going to main-end.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">size</span></code> - A flex item's width or height, whichever is in the main dimension, is the item's main size. The flex item's main size property is either the ‘width’ or ‘height’ property, whichever is in the main dimension.
+cross axis - The axis perpendicular to the main axis is called the cross axis. Its direction depends on the main axis direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cross-start</span> <span class="pre">|</span> <span class="pre">cross-end</span></code> - Flex lines are filled with items and placed into the container starting on the cross-start side of the flex container and going toward the cross-end side.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cross</span> <span class="pre">size</span></code> - The width or height of a flex item, whichever is in the cross dimension, is the item's cross size. The cross size property is whichever of ‘width’ or ‘height’ that is in the cross dimension.</p></li>
+</ul>
+</div>
+<div class="section" id="properties-of-the-parent">
+<h3>Properties of the parent<a class="headerlink" href="#properties-of-the-parent" title="永久链接至标题">¶</a></h3>
+<p><img alt="Container" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/flex-container.svg" /></p>
+<div class="section" id="id8">
+<h4>display<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">display</span></code> can be <code class="docutils literal notranslate"><span class="pre">flex</span></code> or <code class="docutils literal notranslate"><span class="pre">inline-flex</span></code>. This defines a flex container (block or inline).</p>
+</div>
+<div class="section" id="flex-flow">
+<h4>flex-flow<a class="headerlink" href="#flex-flow" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">flex-flow</span></code> is a shorthand for the <code class="docutils literal notranslate"><span class="pre">flex-direction</span></code> and <code class="docutils literal notranslate"><span class="pre">flex-wrap</span></code> properties, which together define the flex container's main and cross axes. Default is <code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">nowrap</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-direction</span></code> (column-reverse | column | row | row-reverse )</p>
+<p>This establishes the main-axis, thus defining the direction flex items are placed in the flex container. Flexbox is (aside from optional wrapping) a single-direction layout concept. Think of flex items as primarily laying out either in horizontal rows or vertical columns.
+<img alt="Direction" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/flex-direction1.svg" /></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-wrap</span></code> (nowrap | wrap | wrap-reverse)</p>
+<p>By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property. Direction also plays a role here, determining the direction new lines are stacked in.
+<img alt="Wrap" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/flex-wrap.svg" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="justify-content">
+<h4>justify-content<a class="headerlink" href="#justify-content" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">justify-content</span></code> can be one of <code class="docutils literal notranslate"><span class="pre">flex-start</span></code>, <code class="docutils literal notranslate"><span class="pre">flex-end</span></code>, <code class="docutils literal notranslate"><span class="pre">center</span></code>, <code class="docutils literal notranslate"><span class="pre">space-between</span></code>, <code class="docutils literal notranslate"><span class="pre">space-around</span></code>. This defines the alignment along the main axis. It helps distribute extra free space left over when either all the flex items on a line are inflexible, or are flexible but have reached their maximum size. It also exerts some control over the alignment of items when they overflow the line.
+<img alt="Justify" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/justify-content.svg" /></p>
+</div>
+<div class="section" id="align-items">
+<h4>align-items<a class="headerlink" href="#align-items" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">align-items</span></code> can be one of <code class="docutils literal notranslate"><span class="pre">flex-start</span></code>, <code class="docutils literal notranslate"><span class="pre">flex-end</span></code>, <code class="docutils literal notranslate"><span class="pre">center</span></code>, <code class="docutils literal notranslate"><span class="pre">baseline</span></code>, <code class="docutils literal notranslate"><span class="pre">stretch</span></code>. This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the justify-content version for the cross-axis (perpendicular to the main-axis).
+<img alt="Items" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/align-items.svg" /></p>
+</div>
+<div class="section" id="align-content">
+<h4>align-content<a class="headerlink" href="#align-content" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">align-content</span></code> can be one of <code class="docutils literal notranslate"><span class="pre">flex-start</span></code>, <code class="docutils literal notranslate"><span class="pre">flex-end</span></code>, <code class="docutils literal notranslate"><span class="pre">center</span></code>, <code class="docutils literal notranslate"><span class="pre">baseline</span></code>, <code class="docutils literal notranslate"><span class="pre">stretch</span></code>. This aligns a flex container's lines within when there is extra space in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
+<img alt="Items" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/align-content.svg" /></p>
+<p><strong>Note</strong>: this property has no effect when there is only one line of flex items.</p>
+</div>
+</div>
+<div class="section" id="properties-of-the-items">
+<h3>Properties of the items<a class="headerlink" href="#properties-of-the-items" title="永久链接至标题">¶</a></h3>
+<p><img alt="Item" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/flex-items.svg" /></p>
+<p>The flexbox-related CSS properties of the items have no impact if the parent element is not a flexbox container (i.e. has a <code class="docutils literal notranslate"><span class="pre">display</span></code> attribute equal to <code class="docutils literal notranslate"><span class="pre">flex</span></code> or <code class="docutils literal notranslate"><span class="pre">inline-flex</span></code>).</p>
+<div class="section" id="order">
+<h4>order<a class="headerlink" href="#order" title="永久链接至标题">¶</a></h4>
+<p>By default, flex items are laid out in the source order. However, the <code class="docutils literal notranslate"><span class="pre">order</span></code> property controls the order in which they appear in the flex container.
+<img alt="Order" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/order-2.svg" /></p>
+</div>
+<div class="section" id="flex">
+<h4>flex<a class="headerlink" href="#flex" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">flex</span></code> is shorthand for three properties, <code class="docutils literal notranslate"><span class="pre">flex-grow</span></code>, <code class="docutils literal notranslate"><span class="pre">flex-shrink</span></code> and <code class="docutils literal notranslate"><span class="pre">flex-basis</span></code> combined. The second and third parameters (<code class="docutils literal notranslate"><span class="pre">flex-shrink</span></code> and <code class="docutils literal notranslate"><span class="pre">flex-basis</span></code>) are optional. Default is <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">auto</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-grow</span></code></p>
+<p>This defines the ability for a flex item to grow if necessary. It accepts a unitless value that serves as a proportion. It dictates what amount of the available space inside the flex container the item should take up.</p>
+<p>If all items have flex-grow set to 1, the remaining space in the container will be distributed equally to all children. If one of the children a value of 2, the remaining space would take up twice as much space as the others (or it will try to, at least).
+<img alt="Grow" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/flex-grow.svg" /></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-shrink</span></code></p>
+<p>This defines the ability for a flex item to shrink if necessary.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flex-basis</span></code></p>
+<p>This defines the default size of an element before the remaining space is distributed. It can be a length (e.g. <code class="docutils literal notranslate"><span class="pre">20%</span></code>, <code class="docutils literal notranslate"><span class="pre">5rem</span></code>, etc.) or a keyword. The <code class="docutils literal notranslate"><span class="pre">auto</span></code> keyword means <em>&quot;look at my width or height property&quot;</em>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="align-self">
+<h4>align-self<a class="headerlink" href="#align-self" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">align-self</span></code> allows the default alignment (or the one specified by align-items) to be overridden for individual flex items.</p>
+<p><img alt="Align" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/align-self.svg" /></p>
+</div>
+</div>
+<div class="section" id="the-vbox-and-hbox-helpers">
+<h3>The VBox and HBox helpers<a class="headerlink" href="#the-vbox-and-hbox-helpers" title="永久链接至标题">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">VBox</span></code> and <code class="docutils literal notranslate"><span class="pre">HBox</span></code> helper classes provide simple defaults to arrange child widgets in vertical and horizontal boxes. They are roughly equivalent to:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">VBox</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Displays multiple widgets vertically using the flexible box model.&quot;&quot;&quot;</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">box</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">display</span> <span class="o">=</span> <span class="s1">&#39;flex&#39;</span>
+    <span class="n">box</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">flex_flow</span> <span class="o">=</span> <span class="s1">&#39;column&#39;</span>
+    <span class="n">box</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;stretch&#39;</span>
+    <span class="k">return</span> <span class="n">box</span>
+
+<span class="k">def</span> <span class="nf">HBox</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Displays multiple widgets horizontally using the flexible box model.&quot;&quot;&quot;</span>
+    <span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="o">*</span><span class="n">pargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">box</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">display</span> <span class="o">=</span> <span class="s1">&#39;flex&#39;</span>
+    <span class="n">box</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;stretch&#39;</span>
+    <span class="k">return</span> <span class="n">box</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>例子<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Box</span>
+
+<span class="n">items_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>     <span class="c1"># override the default width of the button to &#39;auto&#39; to let the button grow</span>
+
+<span class="n">box_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;flex&#39;</span><span class="p">,</span>
+                    <span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">,</span>
+                    <span class="n">align_items</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">,</span>
+                    <span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>
+                    <span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">)</span>
+
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;correct&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;battery&#39;</span><span class="p">,</span> <span class="s1">&#39;staple&#39;</span><span class="p">]</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">word</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">items_layout</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+<span class="n">box</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">box_layout</span><span class="p">)</span>
+<span class="n">box</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Box(children=(Button(button_style=&#39;danger&#39;, description=&#39;correct&#39;, layout=Layout(width=&#39;auto&#39;), style=ButtonSt…
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">HBox</span></code> 中有三个按钮。flex 项可按其权重比例伸缩。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Box</span><span class="p">,</span> <span class="n">VBox</span>
+
+<span class="c1"># Items flex proportionally to the weight and the left over space around the text</span>
+<span class="n">items_auto</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;weight=1; auto&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex</span><span class="o">=</span><span class="s1">&#39;1 1 auto&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">),</span>
+    <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;weight=3; auto&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex</span><span class="o">=</span><span class="s1">&#39;3 1 auto&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">),</span>
+    <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;weight=1; auto&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex</span><span class="o">=</span><span class="s1">&#39;1 1 auto&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">),</span>
+ <span class="p">]</span>
+
+<span class="c1"># Items flex proportionally to the weight</span>
+<span class="n">items_0</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;weight=1; 0%&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex</span><span class="o">=</span><span class="s1">&#39;1 1 0%&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">),</span>
+    <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;weight=3; 0%&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex</span><span class="o">=</span><span class="s1">&#39;3 1 0%&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">),</span>
+    <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;weight=1; 0%&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">flex</span><span class="o">=</span><span class="s1">&#39;1 1 0%&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">),</span>
+ <span class="p">]</span>
+<span class="n">box_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;flex&#39;</span><span class="p">,</span>
+                    <span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">,</span>
+                    <span class="n">align_items</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">,</span>
+                    <span class="n">width</span><span class="o">=</span><span class="s1">&#39;70%&#39;</span><span class="p">)</span>
+<span class="n">box_auto</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="n">items_auto</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">box_layout</span><span class="p">)</span>
+<span class="n">box_0</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="n">items_0</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">box_layout</span><span class="p">)</span>
+<span class="n">VBox</span><span class="p">([</span><span class="n">box_auto</span><span class="p">,</span> <span class="n">box_0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(Box(children=(Button(button_style=&#39;danger&#39;, description=&#39;weight=1; auto&#39;, layout=Layout(flex=&#39;1…
+</pre></div>
+</div>
+<div class="section" id="id10">
+<h4>一个更高级的例子：响应式表单<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<p>表单是一个宽度为 50% 的 <code class="docutils literal notranslate"><span class="pre">VBox</span></code>。<code class="docutils literal notranslate"><span class="pre">VBox</span></code> 中的每一行都是一个 <code class="docutils literal notranslate"><span class="pre">HBox</span></code>，它用空格分隔内容。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">Box</span><span class="p">,</span> <span class="n">FloatText</span><span class="p">,</span> <span class="n">Textarea</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">Label</span><span class="p">,</span> <span class="n">IntSlider</span>
+
+<span class="n">form_item_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span>
+    <span class="n">display</span><span class="o">=</span><span class="s1">&#39;flex&#39;</span><span class="p">,</span>
+    <span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">,</span>
+    <span class="n">justify_content</span><span class="o">=</span><span class="s1">&#39;space-between&#39;</span>
+<span class="p">)</span>
+
+<span class="n">form_items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Box</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Age of the captain&#39;</span><span class="p">),</span> <span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">60</span><span class="p">)],</span> <span class="n">layout</span><span class="o">=</span><span class="n">form_item_layout</span><span class="p">),</span>
+    <span class="n">Box</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Egg style&#39;</span><span class="p">),</span>
+         <span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Scrambled&#39;</span><span class="p">,</span> <span class="s1">&#39;Sunny side up&#39;</span><span class="p">,</span> <span class="s1">&#39;Over easy&#39;</span><span class="p">])],</span> <span class="n">layout</span><span class="o">=</span><span class="n">form_item_layout</span><span class="p">),</span>
+    <span class="n">Box</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Ship size&#39;</span><span class="p">),</span>
+         <span class="n">FloatText</span><span class="p">()],</span> <span class="n">layout</span><span class="o">=</span><span class="n">form_item_layout</span><span class="p">),</span>
+    <span class="n">Box</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Information&#39;</span><span class="p">),</span>
+         <span class="n">Textarea</span><span class="p">()],</span> <span class="n">layout</span><span class="o">=</span><span class="n">form_item_layout</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">form</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">form_items</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span>
+    <span class="n">display</span><span class="o">=</span><span class="s1">&#39;flex&#39;</span><span class="p">,</span>
+    <span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">,</span>
+    <span class="n">border</span><span class="o">=</span><span class="s1">&#39;solid 2px&#39;</span><span class="p">,</span>
+    <span class="n">align_items</span><span class="o">=</span><span class="s1">&#39;stretch&#39;</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span>
+<span class="p">))</span>
+<span class="n">form</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Box(children=(Box(children=(Label(value=&#39;Age of the captain&#39;), IntSlider(value=40, max=60, min=40)), layout=La…
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h4>一个更高级的例子：旋转木马。<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Button</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Label</span>
+
+<span class="n">item_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s1">&#39;100px&#39;</span><span class="p">,</span> <span class="n">min_width</span><span class="o">=</span><span class="s1">&#39;40px&#39;</span><span class="p">)</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">Button</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">item_layout</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;warning&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">)]</span>
+<span class="n">box_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">(</span><span class="n">overflow</span><span class="o">=</span><span class="s1">&#39;scroll hidden&#39;</span><span class="p">,</span>
+                    <span class="n">border</span><span class="o">=</span><span class="s1">&#39;3px solid black&#39;</span><span class="p">,</span>
+                    <span class="n">width</span><span class="o">=</span><span class="s1">&#39;500px&#39;</span><span class="p">,</span>
+                    <span class="n">height</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="n">flex_flow</span><span class="o">=</span><span class="s1">&#39;row&#39;</span><span class="p">,</span>
+                    <span class="n">display</span><span class="o">=</span><span class="s1">&#39;flex&#39;</span><span class="p">)</span>
+<span class="n">carousel</span> <span class="o">=</span> <span class="n">Box</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="n">items</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">box_layout</span><span class="p">)</span>
+<span class="n">VBox</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="s1">&#39;Scroll horizontally:&#39;</span><span class="p">),</span> <span class="n">carousel</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(Label(value=&#39;Scroll horizontally:&#39;), Box(children=(Button(button_style=&#39;warning&#39;, description=&#39;…
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>预定义的风格<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>如果你希望小部件的样式利用环境定义的颜色和样式（例如与笔记本主题一致），许多小部件可以在预定义的样式列表中进行选择。</p>
+<p>例如，<code class="docutils literal notranslate"><span class="pre">Button</span></code> 小部件有一个 <code class="docutils literal notranslate"><span class="pre">button_style</span></code> 属性，它可以取 5 个不同的值：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'primary'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'success'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'info'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'warning'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'danger'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">''</span></code>（默认）</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Button</span>
+
+<span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Danger Button&#39;</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;danger&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Button(button_style=&#39;danger&#39;, description=&#39;Danger Button&#39;, style=ButtonStyle())
+</pre></div>
+</div>
+</div>
+<div class="section" id="style">
+<h3><code class="docutils literal notranslate"><span class="pre">style</span></code> 属性<a class="headerlink" href="#style" title="永久链接至标题">¶</a></h3>
+<p>虽然 <code class="docutils literal notranslate"><span class="pre">layout</span></code> 属性仅为小部件的顶级 DOM 元素公开与布局相关的 CSS 属性，但 <code class="docutils literal notranslate"><span class="pre">style</span></code> 属性用于公开与布局无关的小部件样式属性。</p>
+<p>但是，<code class="docutils literal notranslate"><span class="pre">style</span></code> 属性的属性是特定于每个小部件类型的。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Custom color&#39;</span><span class="p">)</span>
+<span class="n">b1</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">button_color</span> <span class="o">=</span> <span class="s1">&#39;lightgreen&#39;</span>
+<span class="n">b1</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Button(description=&#39;Custom color&#39;, style=ButtonStyle(button_color=&#39;lightgreen&#39;))
+</pre></div>
+</div>
+<p>您可以获得具有 <code class="docutils literal notranslate"><span class="pre">keys</span></code> 属性的小部件的样式属性列表。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">keys</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;_model_module&#39;,
+ &#39;_model_module_version&#39;,
+ &#39;_model_name&#39;,
+ &#39;_view_count&#39;,
+ &#39;_view_module&#39;,
+ &#39;_view_module_version&#39;,
+ &#39;_view_name&#39;,
+ &#39;button_color&#39;,
+ &#39;font_weight&#39;]
+</pre></div>
+</div>
+<p>就像 <code class="docutils literal notranslate"><span class="pre">layout</span></code> 属性一样，小部件样式可以分配给其他小部件。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b2</span> <span class="o">=</span> <span class="n">Button</span><span class="p">()</span>
+<span class="n">b2</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">b1</span><span class="o">.</span><span class="n">style</span>
+<span class="n">b2</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Button(style=ButtonStyle(button_color=&#39;lightgreen&#39;))
+</pre></div>
+</div>
+<p>小部件样式属性特定于每种小部件类型。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">IntSlider</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Blue handle&#39;</span><span class="p">)</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;lightblue&#39;</span>
+<span class="n">s1</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>IntSlider(value=0, description=&#39;Blue handle&#39;, style=SliderStyle(handle_color=&#39;lightblue&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>网格布局<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">GridBox</span></code> class is a special case of the <code class="docutils literal notranslate"><span class="pre">Box</span></code> widget.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Box</span></code> widget enables the entire CSS flexbox spec, enabling rich reactive layouts in the Jupyter notebook. It aims at providing an efficient way to lay out, align and distribute space among items in a container.</p>
+<p>Again, the whole grid layout spec is exposed via the <code class="docutils literal notranslate"><span class="pre">layout</span></code> attribute of the container widget (<code class="docutils literal notranslate"><span class="pre">Box</span></code>) and the contained items. One may share the same <code class="docutils literal notranslate"><span class="pre">layout</span></code> attribute among all the contained items.</p>
+<p>The following flexbox tutorial on the flexbox layout follows the lines of the article <a class="reference external" href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a> by Chris House, and uses text and various images from the article <a class="reference external" href="https://css-tricks.com/license/">with permission</a>.</p>
+<div class="section" id="basics-and-browser-support">
+<h3>Basics and browser support<a class="headerlink" href="#basics-and-browser-support" title="永久链接至标题">¶</a></h3>
+<p>To get started you have to define a container element as a grid with display: grid, set the column and row sizes with grid-template-rows, grid-template-columns, and grid_template_areas, and then place its child elements into the grid with grid-column and grid-row. Similarly to flexbox, the source order of the grid items doesn't matter. Your CSS can place them in any order, which makes it super easy to rearrange your grid with media queries. Imagine defining the layout of your entire page, and then completely rearranging it to accommodate a different screen width all with only a couple lines of CSS. Grid is one of the most powerful CSS modules ever introduced.</p>
+<p>As of March 2017, most browsers shipped native, unprefixed support for CSS Grid: Chrome (including on Android), Firefox, Safari (including on iOS), and Opera. Internet Explorer 10 and 11 on the other hand support it, but it's an old implementation with an outdated syntax. The time to build with grid is now!</p>
+</div>
+<div class="section" id="important-terminology">
+<h3>Important terminology<a class="headerlink" href="#important-terminology" title="永久链接至标题">¶</a></h3>
+<p>Before diving into the concepts of Grid it's important to understand the terminology. Since the terms involved here are all kinda conceptually similar, it's easy to confuse them with one another if you don't first memorize their meanings defined by the Grid specification. But don't worry, there aren't many of them.</p>
+<p><strong>Grid Container</strong></p>
+<p>The element on which <code class="docutils literal notranslate"><span class="pre">display:</span> <span class="pre">grid</span></code> is applied. It's the direct parent of all the grid items. In this example container is the grid container.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item item-1&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item item-2&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item item-3&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Grid Item</strong></p>
+<p>The children (e.g. direct descendants) of the grid container. Here the item elements are grid items, but sub-item isn't.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;container&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> 
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;</span>
+  	<span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sub-item&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;item&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Grid Line</strong></p>
+<p>The dividing lines that make up the structure of the grid. They can be either vertical (&quot;column grid lines&quot;) or horizontal (&quot;row grid lines&quot;) and reside on either side of a row or column. Here the yellow line is an example of a column grid line.</p>
+<p><img alt="grid-line" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-line.png" /></p>
+<p><strong>Grid Track</strong></p>
+<p>The space between two adjacent grid lines. You can think of them like the columns or rows of the grid. Here's the grid track between the second and third row grid lines.</p>
+<p><img alt="grid-track" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-track.png" /></p>
+<p><strong>Grid Cell</strong></p>
+<p>The space between two adjacent row and two adjacent column grid lines. It's a single &quot;unit&quot; of the grid. Here's the grid cell between row grid lines 1 and 2, and column grid lines 2 and 3.</p>
+<p><img alt="grid-cell" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-cell.png" /></p>
+<p><strong>Grid Area</strong></p>
+<p>The total space surrounded by four grid lines. A grid area may be comprised of any number of grid cells. Here's the grid area between row grid lines 1 and 3, and column grid lines 1 and 3.</p>
+<p><img alt="grid-area" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-area.png" /></p>
+</div>
+<div class="section" id="id14">
+<h3>Properties of the parent<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p><strong>grid-template-rows, grid-template-colums</strong></p>
+<p>Defines the columns and rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;track-size&gt;</span></code> - can be a length, a percentage, or a fraction of the free space in the grid (using the <code class="docutils literal notranslate"><span class="pre">fr</span></code> unit)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;line-name&gt;</span></code> - an arbitrary name of your choosing</p></li>
+</ul>
+<p><strong>grid-template-areas</strong></p>
+<p>Defines a grid template by referencing the names of the grid areas which are specified with the grid-area property. Repeating the name of a grid area causes the content to span those cells. A period signifies an empty cell. The syntax itself provides a visualization of the structure of the grid.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;grid-area-name&gt;</span></code> - the name of a grid area specified with <code class="docutils literal notranslate"><span class="pre">grid-area</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> - a period signifies an empty grid cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code> - no grid areas are defined</p></li>
+</ul>
+<p><strong>grid-gap</strong></p>
+<p>A shorthand for <code class="docutils literal notranslate"><span class="pre">grid-row-gap</span></code> and <code class="docutils literal notranslate"><span class="pre">grid-column-gap</span></code></p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;grid-row-gap&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;grid-column-gap&gt;</span></code> - length values</p></li>
+</ul>
+<p>where <code class="docutils literal notranslate"><span class="pre">grid-row-gap</span></code> and <code class="docutils literal notranslate"><span class="pre">grid-column-gap</span></code> specify the sizes of the grid lines. You can think of it like setting the width of the gutters between the columns / rows.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;line-size&gt;</span></code> - a length value</p></li>
+</ul>
+<p><em>Note: The <code class="docutils literal notranslate"><span class="pre">grid-</span></code> prefix will be removed and <code class="docutils literal notranslate"><span class="pre">grid-gap</span></code> renamed to <code class="docutils literal notranslate"><span class="pre">gap</span></code>. The unprefixed property is already supported in Chrome 68+, Safari 11.2 Release 50+ and Opera 54+.</em></p>
+<p><strong>align-items</strong></p>
+<p>Aligns grid items along the block (column) axis (as opposed to justify-items which aligns along the inline (row) axis). This value applies to all grid items inside the container.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> - aligns items to be flush with the start edge of their cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> - aligns items to be flush with the end edge of their cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - aligns items in the center of their cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stretch</span></code> - fills the whole height of the cell (this is the default)</p></li>
+</ul>
+<p><strong>justify-items</strong></p>
+<p>Aligns grid items along the inline (row) axis (as opposed to <code class="docutils literal notranslate"><span class="pre">align-items</span></code> which aligns along the block (column) axis). This value applies to all grid items inside the container.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> - aligns items to be flush with the start edge of their cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> - aligns items to be flush with the end edge of their cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - aligns items in the center of their cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stretch</span></code> - fills the whole width of the cell (this is the default)</p></li>
+</ul>
+<p><strong>align-content</strong></p>
+<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like <code class="docutils literal notranslate"><span class="pre">px</span></code>. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the block (column) axis (as opposed to justify-content which aligns the grid along the inline (row) axis).</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> - aligns the grid to be flush with the start edge of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> - aligns the grid to be flush with the end edge of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - aligns the grid in the center of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stretch</span></code> - resizes the grid items to allow the grid to fill the full height of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space-around</span></code> - places an even amount of space between each grid item, with half-sized spaces on the far ends</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space-between</span></code> - places an even amount of space between each grid item, with no space at the far ends</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space-evenly</span></code> - places an even amount of space between each grid item, including the far ends</p></li>
+</ul>
+<p><strong>justify-content</strong></p>
+<p>Sometimes the total size of your grid might be less than the size of its grid container. This could happen if all of your grid items are sized with non-flexible units like <code class="docutils literal notranslate"><span class="pre">px</span></code>. In this case you can set the alignment of the grid within the grid container. This property aligns the grid along the inline (row) axis (as opposed to align-content which aligns the grid along the block (column) axis).</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> - aligns the grid to be flush with the start edge of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> - aligns the grid to be flush with the end edge of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - aligns the grid in the center of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stretch</span></code> - resizes the grid items to allow the grid to fill the full width of the grid container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space-around</span></code> - places an even amount of space between each grid item, with half-sized spaces on the far ends</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space-between</span></code> - places an even amount of space between each grid item, with no space at the far ends</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">space-evenly</span></code> - places an even amount of space between each grid item, including the far ends</p></li>
+</ul>
+<p><strong>grid-auto-columns, grid-auto-rows</strong></p>
+<p>Specifies the size of any auto-generated grid tracks (aka implicit grid tracks). Implicit tracks get created when there are more grid items than cells in the grid or when a grid item is placed outside of the explicit grid. (see The Difference Between Explicit and Implicit Grids)</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;track-size&gt;</span></code> - can be a length, a percentage, or a fraction of the free space in the grid (using the <code class="docutils literal notranslate"><span class="pre">fr</span></code> unit)</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h3>Properties of the items<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p><em>Note: <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">display:</span> <span class="pre">inline-block</span></code>, <code class="docutils literal notranslate"><span class="pre">display:</span> <span class="pre">table-cell</span></code>, <code class="docutils literal notranslate"><span class="pre">vertical-align</span></code> and <code class="docutils literal notranslate"><span class="pre">column-??</span></code> properties have no effect on a grid item.</em></p>
+<p><strong>grid-column, grid-row</strong></p>
+<p>Determines a grid item's location within the grid by referring to specific grid lines. <code class="docutils literal notranslate"><span class="pre">grid-column-start</span></code>/<code class="docutils literal notranslate"><span class="pre">grid-row-start</span></code> is the line where the item begins, and <code class="docutils literal notranslate"><span class="pre">grid-column-end</span></code>/<code class="docutils literal notranslate"><span class="pre">grid-row-end</span></code> is the line where the item ends.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;line&gt;</span></code> - can be a number to refer to a numbered grid line, or a name to refer to a named grid line</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">span</span> <span class="pre">&lt;number&gt;</span></code> - the item will span across the provided number of grid tracks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">span</span> <span class="pre">&lt;name&gt;</span></code> - the item will span across until it hits the next line with the provided name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auto</span></code> - indicates auto-placement, an automatic span, or a default span of one</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+  <span class="k">grid-column</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="kc">auto</span> <span class="o">/</span> 
+               <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="kc">auto</span>
+  <span class="k">grid-row</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="kc">auto</span> <span class="o">/</span>
+            <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">span</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="kc">auto</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-a</span> <span class="p">{</span>
+  <span class="k">grid-column</span><span class="p">:</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">five</span><span class="p">;</span>
+  <span class="k">grid-row</span><span class="p">:</span> <span class="n">row1-start</span> <span class="o">/</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="grid-start-end-a" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-start-end-a.png" /></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-b</span> <span class="p">{</span>
+  <span class="k">grid-column</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">span</span> <span class="n">col4-start</span><span class="p">;</span>
+  <span class="k">grid-row</span><span class="p">:</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">span</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="grid-start-end-b" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-start-end-b.png" /></p>
+<p>If no <code class="docutils literal notranslate"><span class="pre">grid-column</span></code> / <code class="docutils literal notranslate"><span class="pre">grid-row</span></code> is declared, the item will span 1 track by default.</p>
+<p>Items can overlap each other. You can use <code class="docutils literal notranslate"><span class="pre">z-index</span></code> to control their stacking order.</p>
+<p><strong>grid-area</strong></p>
+<p>Gives an item a name so that it can be referenced by a template created with the <code class="docutils literal notranslate"><span class="pre">grid-template-areas</span></code> property. Alternatively, this property can be used as an even shorter shorthand for <code class="docutils literal notranslate"><span class="pre">grid-row-start</span></code> + <code class="docutils literal notranslate"><span class="pre">grid-column-start</span></code> + <code class="docutils literal notranslate"><span class="pre">grid-row-end</span></code> + <code class="docutils literal notranslate"><span class="pre">grid-column-end</span></code>.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> - a name of your choosing</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;row-start&gt;</span> <span class="pre">/</span> <span class="pre">&lt;column-start&gt;</span> <span class="pre">/</span> <span class="pre">&lt;row-end&gt;</span> <span class="pre">/</span> <span class="pre">&lt;column-end&gt;</span></code> - can be numbers or named lines</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">|</span> <span class="o">&lt;</span><span class="kc">row</span><span class="o">-</span><span class="kc">start</span><span class="o">&gt;</span> <span class="o">/</span> <span class="o">&lt;</span><span class="kc">column</span><span class="o">-</span><span class="kc">start</span><span class="o">&gt;</span> <span class="o">/</span> <span class="o">&lt;</span><span class="kc">row</span><span class="o">-</span><span class="kc">end</span><span class="o">&gt;</span> <span class="o">/</span> <span class="o">&lt;</span><span class="kc">column</span><span class="o">-</span><span class="kc">end</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<p>As a way to assign a name to the item:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-d</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="n">header</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As the short-shorthand for <code class="docutils literal notranslate"><span class="pre">grid-row-start</span></code> + <code class="docutils literal notranslate"><span class="pre">grid-column-start</span></code> + <code class="docutils literal notranslate"><span class="pre">grid-row-end</span></code> + <code class="docutils literal notranslate"><span class="pre">grid-column-end</span></code>:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-d</span> <span class="p">{</span>
+  <span class="k">grid-area</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">col4-start</span> <span class="o">/</span> <span class="kc">last</span><span class="o">-</span><span class="n">line</span> <span class="o">/</span> <span class="mi">6</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="grid-start-end-d" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-start-end-d.png" /></p>
+<p><strong>justify-self</strong></p>
+<p>Aligns a grid item inside a cell along the inline (row) axis (as opposed to <code class="docutils literal notranslate"><span class="pre">align-self</span></code> which aligns along the block (column) axis). This value applies to a grid item inside a single cell.</p>
+<p>Values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code> - aligns the grid item to be flush with the start edge of the cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">end</span></code> - aligns the grid item to be flush with the end edge of the cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">center</span></code> - aligns the grid item in the center of the cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stretch</span></code> - fills the whole width of the cell (this is the default)</p></li>
+</ul>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+  <span class="k">justify-self</span><span class="p">:</span> <span class="kc">start</span> <span class="o">|</span> <span class="kc">end</span> <span class="o">|</span> <span class="kc">center</span> <span class="o">|</span> <span class="kc">stretch</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Examples:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-a</span> <span class="p">{</span>
+  <span class="k">justify-self</span><span class="p">:</span> <span class="kc">start</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="Example of  set to start" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-start.png" /></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-a</span> <span class="p">{</span>
+  <span class="k">justify-self</span><span class="p">:</span> <span class="kc">end</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="Example of  set to end" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-end.png" /></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-a</span> <span class="p">{</span>
+  <span class="k">justify-self</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="Example of  set to center" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-center.png" /></p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">item-a</span> <span class="p">{</span>
+  <span class="k">justify-self</span><span class="p">:</span> <span class="kc">stretch</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="Example of  set to stretch" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-stretch.png" /></p>
+<p>To set alignment for <em>all</em> the items in a grid, this behavior can also be set on the grid container via the <code class="docutils literal notranslate"><span class="pre">justify-items</span></code> property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Button</span><span class="p">,</span> <span class="n">GridBox</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">ButtonStyle</span>
+</pre></div>
+</div>
+<p>按名称摆放：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">header</span>  <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Header&#39;</span><span class="p">,</span>
+                 <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">grid_area</span><span class="o">=</span><span class="s1">&#39;header&#39;</span><span class="p">),</span>
+                 <span class="n">style</span><span class="o">=</span><span class="n">ButtonStyle</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">))</span>
+<span class="n">main</span>    <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Main&#39;</span><span class="p">,</span>
+                 <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">grid_area</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">),</span>
+                 <span class="n">style</span><span class="o">=</span><span class="n">ButtonStyle</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;moccasin&#39;</span><span class="p">))</span>
+<span class="n">sidebar</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Sidebar&#39;</span><span class="p">,</span>
+                 <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">grid_area</span><span class="o">=</span><span class="s1">&#39;sidebar&#39;</span><span class="p">),</span>
+                 <span class="n">style</span><span class="o">=</span><span class="n">ButtonStyle</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">))</span>
+<span class="n">footer</span>  <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Footer&#39;</span><span class="p">,</span>
+                 <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">grid_area</span><span class="o">=</span><span class="s1">&#39;footer&#39;</span><span class="p">),</span>
+                 <span class="n">style</span><span class="o">=</span><span class="n">ButtonStyle</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;olive&#39;</span><span class="p">))</span>
+
+<span class="n">GridBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="n">header</span><span class="p">,</span> <span class="n">main</span><span class="p">,</span> <span class="n">sidebar</span><span class="p">,</span> <span class="n">footer</span><span class="p">],</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span>
+            <span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span>
+            <span class="n">grid_template_rows</span><span class="o">=</span><span class="s1">&#39;auto auto auto&#39;</span><span class="p">,</span>
+            <span class="n">grid_template_columns</span><span class="o">=</span><span class="s1">&#39;25</span><span class="si">% 25%</span><span class="s1"> 25</span><span class="si">% 25%</span><span class="s1">&#39;</span><span class="p">,</span>
+            <span class="n">grid_template_areas</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            &quot;header header header header&quot;</span>
+<span class="s1">            &quot;main main . sidebar &quot;</span>
+<span class="s1">            &quot;footer footer footer footer&quot;</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GridBox(children=(Button(description=&#39;Header&#39;, layout=Layout(grid_area=&#39;header&#39;, width=&#39;auto&#39;), style=ButtonSt…
+</pre></div>
+</div>
+<p>设置行、列模板和间隙</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">GridBox</span><span class="p">(</span><span class="n">children</span><span class="o">=</span><span class="p">[</span><span class="n">Button</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">),</span>
+                         <span class="n">style</span><span class="o">=</span><span class="n">ButtonStyle</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s1">&#39;darkseagreen&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+                 <span class="p">],</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span>
+            <span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">,</span>
+            <span class="n">grid_template_columns</span><span class="o">=</span><span class="s1">&#39;100px 50px 100px&#39;</span><span class="p">,</span>
+            <span class="n">grid_template_rows</span><span class="o">=</span><span class="s1">&#39;80px auto 80px&#39;</span><span class="p">,</span>
+            <span class="n">grid_gap</span><span class="o">=</span><span class="s1">&#39;5px 10px&#39;</span><span class="p">)</span>
+       <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GridBox(children=(Button(layout=Layout(height=&#39;auto&#39;, width=&#39;auto&#39;), style=ButtonStyle(button_color=&#39;darkseagr…
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="image-layout-and-sizing">
+<h2><code class="docutils literal notranslate"><span class="pre">Image</span></code> layout and sizing<a class="headerlink" href="#image-layout-and-sizing" title="永久链接至标题">¶</a></h2>
+<p>The layout and sizing of images is a little different than for other elements for a combination of historical reasons (the HTML tag <code class="docutils literal notranslate"><span class="pre">img</span></code> existed before CSS) and practical reasons (an image has an intrinsic size).</p>
+<p>Sizing of images is particularly confusing because there are two plausible ways to specify the size of an image. The <code class="docutils literal notranslate"><span class="pre">Image</span></code> widget has attributes <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> that correspond to attributes of the same name on the HTML <code class="docutils literal notranslate"><span class="pre">img</span></code> tag. In addition, the <code class="docutils literal notranslate"><span class="pre">Image</span></code> widget, like every other widget, has a <code class="docutils literal notranslate"><span class="pre">layout</span></code>, which also has a <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code>.</p>
+<p>In addition, some CSS styling is applied to images that is not applied to other widgets: <code class="docutils literal notranslate"><span class="pre">max_width</span></code> is set to <code class="docutils literal notranslate"><span class="pre">100%</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>.</p>
+<p>You should not rely on <code class="docutils literal notranslate"><span class="pre">Image.width</span></code> or <code class="docutils literal notranslate"><span class="pre">Image.height</span></code> to determine the display width and height of the image widget. Any CSS styling, whether via <code class="docutils literal notranslate"><span class="pre">Image.layout</span></code> or some other source, will override <code class="docutils literal notranslate"><span class="pre">Image.width</span></code> and <code class="docutils literal notranslate"><span class="pre">Image.height</span></code>.</p>
+<p>When displaying an <code class="docutils literal notranslate"><span class="pre">Image</span></code> widget by itself, setting <code class="docutils literal notranslate"><span class="pre">Image.layout.width</span></code> to the desired width will display the <code class="docutils literal notranslate"><span class="pre">Image</span></code> widget with the same aspect ratio as the original image.</p>
+<p>When placing an <code class="docutils literal notranslate"><span class="pre">Image</span></code> inside a <code class="docutils literal notranslate"><span class="pre">Box</span></code> (or <code class="docutils literal notranslate"><span class="pre">HBox</span></code> or <code class="docutils literal notranslate"><span class="pre">VBox</span></code>) the result depends on whether a width has been set on the <code class="docutils literal notranslate"><span class="pre">Box</span></code>. If it has, then the image will be stretched (or compressed) to fit within the box because <code class="docutils literal notranslate"><span class="pre">Image.layout.max_width</span></code> is <code class="docutils literal notranslate"><span class="pre">100%</span></code> so the image fills the container. This will usually not preserve the aspect ratio of image.</p>
+<div class="section" id="controlling-the-display-of-an-image-inside-a-container">
+<h3>Controlling the display of an <code class="docutils literal notranslate"><span class="pre">Image</span></code> inside a container<a class="headerlink" href="#controlling-the-display-of-an-image-inside-a-container" title="永久链接至标题">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Image.layout.object_fit</span></code> to control how an image is scaled inside a container like a box. The possible values are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'contain'</span></code>: Fit the image in its content box while preserving the aspect ratio. If any of the container is not covered by the image, the background of the container is displayed. The content box is the size of the container if the container is smaller than the image, or the size of the image if the container is larger.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'cover'</span></code>: Fill the content box completely while preserving the aspect ratio of the image, cropping the image if necessary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'fill'</span></code>: Completely fill the content box, stretching/compressing the image as necessary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'none'</span></code>: Do no resizing; image will be clipped by the container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'scale-down'</span></code>: Do the same thing as either <code class="docutils literal notranslate"><span class="pre">contain</span></code> or <code class="docutils literal notranslate"><span class="pre">none</span></code>, using whichever results in the smaller dispayed image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> (the Python value): Remove <code class="docutils literal notranslate"><span class="pre">object_fit</span></code> from the layout; effect is same as <code class="docutils literal notranslate"><span class="pre">'fill'</span></code>.</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Image.layout.object_position</span></code> to control how where an image is positioned within a container like a box. The default value ensures that the image is centered in the box. The effect of <code class="docutils literal notranslate"><span class="pre">Image.layout.object_position</span></code> depends, in some cases, on the value of <code class="docutils literal notranslate"><span class="pre">Image.layout.object_fit</span></code>.</p>
+<p>There are severl ways to specify the value for <code class="docutils literal notranslate"><span class="pre">object_position</span></code>, described below.</p>
+</div>
+<div class="section" id="examples-of-object-fit">
+<h3>Examples of <code class="docutils literal notranslate"><span class="pre">object_fit</span></code><a class="headerlink" href="#examples-of-object-fit" title="永久链接至标题">¶</a></h3>
+<p>In the example below an image is displayed inside a green box to demonstrate each of the values for <code class="docutils literal notranslate"><span class="pre">object_fit</span></code>.</p>
+<p>To keep the example uniform, define common code here.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Box</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">HBox</span><span class="p">,</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Image</span>
+
+<span class="n">fit_options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;contain&#39;</span><span class="p">,</span> <span class="s1">&#39;cover&#39;</span><span class="p">,</span> <span class="s1">&#39;fill&#39;</span><span class="p">,</span> <span class="s1">&#39;scale-down&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span>
+
+<span class="n">hbox_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
+<span class="n">hbox_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;100%&#39;</span>
+<span class="n">hbox_layout</span><span class="o">.</span><span class="n">justify_content</span> <span class="o">=</span> <span class="s1">&#39;space-around&#39;</span>
+
+<span class="n">green_box_layout</span> <span class="o">=</span> <span class="n">Layout</span><span class="p">()</span>
+<span class="n">green_box_layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;100px&#39;</span>
+<span class="n">green_box_layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="s1">&#39;100px&#39;</span>
+<span class="n">green_box_layout</span><span class="o">.</span><span class="n">border</span> <span class="o">=</span> <span class="s1">&#39;2px solid green&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">make_box_for_grid</span><span class="p">(</span><span class="n">image_widget</span><span class="p">,</span> <span class="n">fit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make a VBox to hold caption/image for demonstrating</span>
+<span class="sd">    option_fit values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Make the caption</span>
+    <span class="k">if</span> <span class="n">fit</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">fit_str</span> <span class="o">=</span> <span class="s2">&quot;&#39;{}&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fit_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fit</span><span class="p">)</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">fit_str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Make the green box with the image widget inside it</span>
+    <span class="n">boxb</span> <span class="o">=</span> <span class="n">Box</span><span class="p">()</span>
+    <span class="n">boxb</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">green_box_layout</span>
+    <span class="n">boxb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">image_widget</span><span class="p">]</span>
+
+    <span class="c1"># Compose into a vertical box</span>
+    <span class="n">vb</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">()</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+    <span class="n">vb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">boxb</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">vb</span>
+
+<span class="c1"># Use this margin to eliminate space between the image and the box</span>
+<span class="n">image_margin</span> <span class="o">=</span> <span class="s1">&#39;0 0 0 0&#39;</span>
+
+<span class="c1"># Set size of captions in figures below</span>
+<span class="n">caption_size</span> <span class="o">=</span> <span class="s1">&#39;h4&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="object-fit-box">
+<h3><code class="docutils literal notranslate"><span class="pre">object_fit</span></code> 在一个比原始图像小的 <code class="docutils literal notranslate"><span class="pre">Box</span></code> 中<a class="headerlink" href="#object-fit-box" title="永久链接至标题">¶</a></h3>
+<p>每一个的效果可以在下面的图片中看到。在每种情况下，图像都位于一个带有绿色边框的框中。原始图像是 600x300，图像中的网格框是正方形。因为图像比框宽，所以内容框就是容器的大小。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;images/gaussian_with_grid.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">im_600_300</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fit</span> <span class="ow">in</span> <span class="n">fit_options</span><span class="p">:</span>
+    <span class="n">ib</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">im_600_300</span><span class="p">)</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_fit</span> <span class="o">=</span> <span class="n">fit</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">image_margin</span>
+
+    <span class="n">boxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_box_for_grid</span><span class="p">(</span><span class="n">ib</span><span class="p">,</span> <span class="n">fit</span><span class="p">))</span>
+
+<span class="n">vb</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">()</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&lt;{size}&gt;Examples of &lt;code&gt;object_fit&lt;/code&gt; with large image&lt;/{size}&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">caption_size</span><span class="p">))</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+<span class="n">hb</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">()</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">hbox_layout</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">boxes</span>
+
+<span class="n">vb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">hb</span><span class="p">]</span>
+<span class="n">vb</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(HTML(value=&#39;&lt;h4&gt;Examples of &lt;code&gt;object_fit&lt;/code&gt; with large image&lt;/h4&gt;&#39;), HBox(children=(VBo…
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3><code class="docutils literal notranslate"><span class="pre">object_fit</span></code> 在一个比原始图像大的 <code class="docutils literal notranslate"><span class="pre">Box</span></code> 中<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<p>每一个的效果可以在下面的图片中看到。在每种情况下，图像都位于一个带有绿色边框的框中。原始图像是50x25，图像中的网格是正方形。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;images/gaussian_with_grid_tiny.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">im_50_25</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fit</span> <span class="ow">in</span> <span class="n">fit_options</span><span class="p">:</span>
+    <span class="n">ib</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">im_50_25</span><span class="p">)</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_fit</span> <span class="o">=</span> <span class="n">fit</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">image_margin</span>
+    <span class="n">boxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_box_for_grid</span><span class="p">(</span><span class="n">ib</span><span class="p">,</span> <span class="n">fit</span><span class="p">))</span>
+
+<span class="n">vb</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">()</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&lt;{size}&gt;Examples of &lt;code&gt;object_fit&lt;/code&gt; with small image&lt;/{size}&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">caption_size</span><span class="p">))</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+<span class="n">hb</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">()</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">hbox_layout</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">boxes</span>
+
+<span class="n">vb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">hb</span><span class="p">]</span>
+<span class="n">vb</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(HTML(value=&#39;&lt;h4&gt;Examples of &lt;code&gt;object_fit&lt;/code&gt; with small image&lt;/h4&gt;&#39;), HBox(children=(VBo…
+</pre></div>
+</div>
+<p>It may be surprising, given the description of the values for <code class="docutils literal notranslate"><span class="pre">option_fit</span></code>, that in none of the cases does the image actually fill the box. The reason is that the underlying image is only 50 pixels wide, half the width of the box, so <code class="docutils literal notranslate"><span class="pre">fill</span></code> and <code class="docutils literal notranslate"><span class="pre">cover</span></code> mean &quot;fill/cover the content box determined by the size of the image&quot;.</p>
+</div>
+<div class="section" id="object-fit-in-a-box-larger-than-the-original-image-use-image-layout-width-100-to-fill-container">
+<h3><code class="docutils literal notranslate"><span class="pre">object_fit</span></code> in a <code class="docutils literal notranslate"><span class="pre">Box</span></code> larger than the original image: use image layout width <code class="docutils literal notranslate"><span class="pre">100%</span></code>  to fill container<a class="headerlink" href="#object-fit-in-a-box-larger-than-the-original-image-use-image-layout-width-100-to-fill-container" title="永久链接至标题">¶</a></h3>
+<p>If the width of the image's layout is set to <code class="docutils literal notranslate"><span class="pre">100%</span></code> it will fill the box in which it is placed. This example also illustrates the difference between <code class="docutils literal notranslate"><span class="pre">'contain'</span></code> and <code class="docutils literal notranslate"><span class="pre">'scale-down'</span></code>. The effect of <code class="docutils literal notranslate"><span class="pre">'scale-down'</span></code> is either the same as <code class="docutils literal notranslate"><span class="pre">'contain'</span></code> or <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, whichever leads to the smaller displayed image. In this case, the smaller image comes from doing no fitting, so that is what is displayed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fit</span> <span class="ow">in</span> <span class="n">fit_options</span><span class="p">:</span>
+    <span class="n">ib</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">im_50_25</span><span class="p">)</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_fit</span> <span class="o">=</span> <span class="n">fit</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">image_margin</span>
+
+    <span class="c1"># NOTE WIDTH IS SET TO 100%</span>
+    <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;100%&#39;</span>
+
+    <span class="n">boxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_box_for_grid</span><span class="p">(</span><span class="n">ib</span><span class="p">,</span> <span class="n">fit</span><span class="p">))</span>
+
+<span class="n">vb</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">()</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&lt;{size}&gt;Examples of &lt;code&gt;object_fit&lt;/code&gt; with image &#39;</span>
+               <span class="s1">&#39;smaller than container&lt;/{size}&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">caption_size</span><span class="p">))</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+<span class="n">hb</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">()</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">hbox_layout</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">boxes</span>
+
+<span class="n">vb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">hb</span><span class="p">]</span>
+<span class="n">vb</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(HTML(value=&#39;&lt;h4&gt;Examples of &lt;code&gt;object_fit&lt;/code&gt; with image smaller than container&lt;/h4&gt;&#39;), H…
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples-of-object-position">
+<h3>Examples of <code class="docutils literal notranslate"><span class="pre">object_position</span></code><a class="headerlink" href="#examples-of-object-position" title="永久链接至标题">¶</a></h3>
+<p>There are several ways to set object position:</p>
+<ul class="simple">
+<li><p>Use keywords like <code class="docutils literal notranslate"><span class="pre">top</span></code> and <code class="docutils literal notranslate"><span class="pre">left</span></code> to describe how the image should be placed in the container.</p></li>
+<li><p>Use two positions, in pixels, for the offset from the top, left corner of the container to the top, left corner of the image. The offset may be positive or negative, and can be used to position the image outside of the box.</p></li>
+<li><p>Use a percentage for the offset in each direction. The percentage is a the fraction of the vertical or horizontal <em>whitespace</em> around the image if the image is smaller than the container, or the portion of the image outside the container if the image is larger than the container.</p></li>
+<li><p>A mix of pixel and percent offsets.</p></li>
+<li><p>A mix of keywords and offsets.</p></li>
+</ul>
+<p>Image scaling as determined by <code class="docutils literal notranslate"><span class="pre">object_fit</span></code> will take precendence over the positioning in some cases. For example, if <code class="docutils literal notranslate"><span class="pre">object_fit</span></code>  is <code class="docutils literal notranslate"><span class="pre">fill</span></code>, so that the image is supposed to fill the container without preserving the aspect ratio, then <code class="docutils literal notranslate"><span class="pre">object_position</span></code> will have no effect because there is effectively no positioning to do.</p>
+<p>Another way to think about it is this: <code class="docutils literal notranslate"><span class="pre">object_position</span></code> specifies how the <em>white space</em> around an image should be distributed in a container if there is white space in a particular direction.</p>
+</div>
+<div class="section" id="specifying-object-position-with-keywords">
+<h3>Specifying <code class="docutils literal notranslate"><span class="pre">object_position</span></code> with keywords<a class="headerlink" href="#specifying-object-position-with-keywords" title="永久链接至标题">¶</a></h3>
+<p>This form of <code class="docutils literal notranslate"><span class="pre">object_position</span></code> takes two keywords, one for horizontal position of the image in the container and one for the vertical position, in that order.</p>
+<ul class="simple">
+<li><p>The horizontal position must be one of:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'left'</span></code>: the left side of the image should be aligned with the left side of the container</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'center'</span></code>: the image should be centered horizontally in the container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'right'</span></code>: the right side of the image should be aligned with the rigth side of the container.</p></li>
+</ul>
+</li>
+<li><p>The vertical position must be one of</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'top'</span></code>: the top of the image should be aligned with the top of the container.</p></li>
+<li><p>'<code class="docutils literal notranslate"><span class="pre">center</span></code>': the image should be centered vertically in the container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'bottom'</span></code>: the bottom of the image should be aligned with the bottom of the container.</p></li>
+</ul>
+</li>
+</ul>
+<p>The effect of each is display below, once for an image smaller than the container and once for an image larger than the container.</p>
+<p>In the examples below the <code class="docutils literal notranslate"><span class="pre">object_fit</span></code> is set to <code class="docutils literal notranslate"><span class="pre">'none'</span></code> so that the image is not scaled.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">object_fit</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span>
+<span class="n">image_value</span> <span class="o">=</span> <span class="p">[</span><span class="n">im_600_300</span><span class="p">,</span> <span class="n">im_50_25</span><span class="p">]</span>
+<span class="n">horz_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]</span>
+<span class="n">vert_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;bottom&#39;</span><span class="p">]</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">caption</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">image_value</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;600 x 300 image&#39;</span><span class="p">,</span> <span class="s1">&#39;50 x 25 image&#39;</span><span class="p">]):</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">horz</span> <span class="ow">in</span> <span class="n">horz_keywords</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">vert_keywords</span><span class="p">:</span>
+            <span class="n">ib</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+            <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_position</span> <span class="o">=</span> <span class="s1">&#39;{horz} {vert}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">horz</span><span class="o">=</span><span class="n">horz</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="n">vert</span><span class="p">)</span>
+            <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">image_margin</span>
+            <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_fit</span> <span class="o">=</span> <span class="n">object_fit</span>
+            <span class="c1"># ib.layout.height = &#39;inherit&#39;</span>
+            <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;100%&#39;</span>
+            <span class="n">cols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_box_for_grid</span><span class="p">(</span><span class="n">ib</span><span class="p">,</span> <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_position</span><span class="p">))</span>
+    <span class="n">hb</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">()</span>
+    <span class="n">hb</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">hbox_layout</span>
+    <span class="n">hb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">cols</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hb</span><span class="p">)</span>
+
+<span class="n">vb</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">()</span>
+
+<span class="n">h1</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&lt;{size}&gt;&lt;code&gt; object_position &lt;/code&gt; by &#39;</span>
+                <span class="s1">&#39;keyword with large image&lt;/{size}&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">caption_size</span><span class="p">))</span>
+<span class="n">h2</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&lt;{size}&gt;&lt;code&gt; object_position &lt;/code&gt; by &#39;</span>
+                <span class="s1">&#39;keyword with small image&lt;/{size}&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">caption_size</span><span class="p">))</span>
+
+<span class="n">vb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">h1</span><span class="p">,</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">h2</span><span class="p">,</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="s1">&#39;400px&#39;</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">justify_content</span> <span class="o">=</span> <span class="s1">&#39;space-around&#39;</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+<span class="n">vb</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(HTML(value=&#39;&lt;h4&gt;&lt;code&gt; object_position &lt;/code&gt; by keyword with large image&lt;/h4&gt;&#39;), HBox(childre…
+</pre></div>
+</div>
+</div>
+<div class="section" id="specifying-object-position-with-offsets-in-pixels">
+<h3>Specifying <code class="docutils literal notranslate"><span class="pre">object_position</span></code> with offsets in pixels<a class="headerlink" href="#specifying-object-position-with-offsets-in-pixels" title="永久链接至标题">¶</a></h3>
+<p>One can specify the offset of the top, left corner of the image from the top, left corner of the container in pixels. The first of the two offsets is horizontal, the second is vertical and either may be negative. Using a large enough offset that the image is outside the container will result in the image being hidden.</p>
+<p>The image is scaled first using the value of <code class="docutils literal notranslate"><span class="pre">object_fit</span></code> (which defaults to <code class="docutils literal notranslate"><span class="pre">fill</span></code> if nothing is specified) then the offset is applied.</p>
+<p>Offsets can be specified from the bottom and/or right side by combining keywords and pixel offsets. For example, <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">10px</span> <span class="pre">bottom</span> <span class="pre">20px</span></code> offsets the right side of the image 10px from the right edge of the container and the image bottom 20px from the bottom of the container.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">object_fit</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;contain&#39;</span><span class="p">,</span> <span class="s1">&#39;fill&#39;</span><span class="p">,</span> <span class="s1">&#39;cover&#39;</span><span class="p">]</span>
+<span class="n">offset</span> <span class="o">=</span> <span class="s1">&#39;20px 10px&#39;</span>
+<span class="n">image_value</span> <span class="o">=</span> <span class="p">[</span><span class="n">im_600_300</span><span class="p">]</span>
+
+<span class="n">boxes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">image</span><span class="p">,</span> <span class="n">caption</span>  <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">image_value</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;600 x 300 image&#39;</span><span class="p">,</span> <span class="p">]):</span>
+    <span class="k">for</span> <span class="n">fit</span> <span class="ow">in</span> <span class="n">object_fit</span><span class="p">:</span>
+        <span class="n">ib</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_position</span> <span class="o">=</span> <span class="n">offset</span>
+        <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">margin</span> <span class="o">=</span> <span class="n">image_margin</span>
+        <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_fit</span> <span class="o">=</span> <span class="n">fit</span>
+        <span class="c1"># ib.layout.height = &#39;inherit&#39;</span>
+        <span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s1">&#39;100%&#39;</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;object_fit: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ib</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">object_fit</span><span class="p">)</span>
+        <span class="n">boxes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_box_for_grid</span><span class="p">(</span><span class="n">ib</span><span class="p">,</span> <span class="n">title</span><span class="p">))</span>
+
+<span class="n">vb</span> <span class="o">=</span> <span class="n">VBox</span><span class="p">()</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;&lt;{size}&gt;&lt;code&gt;object_position&lt;/code&gt; by &#39;</span>
+               <span class="s1">&#39;offset {offset} with several &#39;</span>
+               <span class="s1">&#39;&lt;code&gt;object_fit&lt;/code&gt;s with large image&lt;/{size}&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">caption_size</span><span class="p">,</span>
+                                                         <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">))</span>
+<span class="n">vb</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">align_items</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+<span class="n">hb</span> <span class="o">=</span> <span class="n">HBox</span><span class="p">()</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">hbox_layout</span>
+<span class="n">hb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">boxes</span>
+
+<span class="n">vb</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">hb</span><span class="p">]</span>
+<span class="n">vb</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBox(children=(HTML(value=&#39;&lt;h4&gt;&lt;code&gt;object_position&lt;/code&gt; by offset 20px 10px with several &lt;code&gt;object_fit&lt;…
+</pre></div>
+</div>
+</div>
+<div class="section" id="specifying-object-position-with-offsets-as-a-percentage">
+<h3>Specifying <code class="docutils literal notranslate"><span class="pre">object_position</span></code> with offsets as a percentage<a class="headerlink" href="#specifying-object-position-with-offsets-as-a-percentage" title="永久链接至标题">¶</a></h3>
+<p>One can specify the offset of the top, left corner of the image from the top, left corner of the container as a percent.The first of the two offsets is horizontal, the second is vertical and either may be negative. Using a large enough offset that the image is outside the container will result in the image being hidden.</p>
+<p>The important thing to understand is that this is a percent of the <em>white space</em> in each direction if the image is smaller than the container, so that <code class="docutils literal notranslate"><span class="pre">50%</span> <span class="pre">50%</span></code> centers the image.</p>
+<p>If the image is larger than the container after scaling using the <code class="docutils literal notranslate"><span class="pre">object_fit</span></code>, then the offset is a percentage of the overflow of the image outside the container. That means that <code class="docutils literal notranslate"><span class="pre">50%</span> <span class="pre">50%</span></code> also centers an image <em>larger</em> than the container. A value of <code class="docutils literal notranslate"><span class="pre">10%</span> <span class="pre">90%</span></code> would put 10% of the out-of-container part of the image left of  the left edge and 90% of the out-of-container part vertically above the top edge.</p>
+<p>As with specifying the <code class="docutils literal notranslate"><span class="pre">object_position</span></code> by keywords, the <code class="docutils literal notranslate"><span class="pre">object_fit</span></code> can prevent any offset from being applied to the image.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ai"
+        },
+        kernelOptions: {
+            kernelName: "ai",
+            path: "./user-guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ai'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="04_widget-events.html" title="previous page">小部件事件</a>
+    <a class='right-next' id="next-link" href="test.html" title="next page">测试</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By xinetzone<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
