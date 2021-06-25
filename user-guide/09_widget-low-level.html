@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Low Level Widget Tutorial &#8212; 品味人生</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "xinetzone/ipywidgets-book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Asynchronous Widgets" href="10_widget-asynchronous.html" />
+    <link rel="prev" title="Using Interact" href="08_using-interact.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">品味人生</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  教程
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   用户手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_install.html">
+     安装
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_intro.html">
+     简单的小部件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_widgets-list.html">
+     小部件清单
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_output-widget.html">
+     Output 小部件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_widget-events.html">
+     小部件事件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_widget-styling.html">
+     布局和样式
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_layout-templates.html">
+     Using Layout Templates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_widget-custom.html">
+     Building a Custom Widget -  Email widget
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_using-interact.html">
+     Using Interact
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Low Level Widget Tutorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_widget-asynchronous.html">
+     Asynchronous Widgets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_embedding.html">
+     Embedding Jupyter Widgets in Other Contexts than the Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test.html">
+     测试
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  附录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faqs.html">
+   常见问题
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="w3-padding w3-card-4 w3-pale-green">
+  <a href="https://github.com/xinetzone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+      data-position="top" data-delay="50">
+      <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:q735613050@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top"
+      data-delay="50">
+      <i class="fas fa-envelope-open"></i>
+  </a>
+  <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=735613050" class="tooltipped"
+      target="_blank" data-tooltip="QQ联系我: 735613050" data-position="top" data-delay="50">
+      <i class="fab fa-qq"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/liu-xin-wei-55" class="tooltipped" target="_blank"
+      data-tooltip="关注我的知乎: liu-xin-wei-55" data-position="top" data-delay="50">
+      <i class="fab fa-zhihu1">知</i>
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xinet" class="tooltipped"
+      data-tooltip="领英联系我: xinet" data-position="top" data-delay="50">
+      <i class="fab fa-linkedin"></i>
+  </a>
+  <div><a href="https://github.com/xinetzone/ipywidgets-book">Jupyter Book</a> 版权所有</div>
+</div> 
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/user-guide/09_widget-low-level.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/xinetzone/ipywidgets-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/xinetzone/ipywidgets-book/issues/new?title=Issue%20on%20page%20%2Fuser-guide/09_widget-low-level.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/xinetzone/ipywidgets-book/main?urlpath=tree/docs/user-guide/09_widget-low-level.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-do-they-fit-into-the-picture">
+   How do they fit into the picture?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how">
+   How?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comms">
+   Comms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#synchronized-state">
+   Synchronized state
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-and-views">
+   Models and Views
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-execution">
+   Code execution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-construction">
+   Model construction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#displaying-a-view">
+   Displaying a view
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#widget-skeleton">
+   Widget skeleton
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#serialization-of-widget-attributes">
+   Serialization of widget attributes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-serialization-and-de-serialization-on-the-python-side">
+     Custom serialization and de-serialization on the Python side
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-serialization-and-de-serialization-on-the-javascript-side">
+     Custom serialization and de-serialization on the JavaScript side
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#static-assets">
+   Static assets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distribution">
+   Distribution
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="low-level-widget-tutorial">
+<h1>Low Level Widget Tutorial<a class="headerlink" href="#low-level-widget-tutorial" title="永久链接至标题">¶</a></h1>
+<p>参考：<a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Low%20Level.html">Low Level Widget Tutorial</a></p>
+<div class="section" id="how-do-they-fit-into-the-picture">
+<h2>How do they fit into the picture?<a class="headerlink" href="#how-do-they-fit-into-the-picture" title="永久链接至标题">¶</a></h2>
+<p>One of the goals of the Jupyter Notebook is to minimize the “distance” the user is from their data.  This means allowing the user to quickly view and manipulate the data.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="inputoutput" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/inputoutput.PNG" /></p></th>
+<th class="head"><p><img alt="example-widgets" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/widgets.PNG" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Before the widgets, this was just the segmentation of code and results from executing those segments.</p></td>
+<td><p>Widgets further decrease the distance between the user and their data by allowing UI interactions to directly manipulate data in the kernel.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="how">
+<h2>How?<a class="headerlink" href="#how" title="永久链接至标题">¶</a></h2>
+<p>Jupyter interactive widgets are interactive elements, think sliders, text boxes, buttons, that have representations both in the kernel (place where code is executed) and the front-end (the Notebook web interface).  To do this, a clean, well-abstracted communication layer must exist.</p>
+</div>
+<div class="section" id="comms">
+<h2>Comms<a class="headerlink" href="#comms" title="永久链接至标题">¶</a></h2>
+<p>This is where Jupyter notebook “comms” come into play.  The comm API is a symmetric, asynchronous, fire and forget style messaging API.  It allows the programmer to send JSON-able blobs between the front-end and the back-end.  The comm API hides the complexity of the webserver, ZMQ, and websockets.</p>
+<p><img alt="comms" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/transport.svg" /></p>
+</div>
+<div class="section" id="synchronized-state">
+<h2>Synchronized state<a class="headerlink" href="#synchronized-state" title="永久链接至标题">¶</a></h2>
+<p>Using comms, the widget base layer is designed to keep state in sync.  In the kernel, a Widget instance exists.  This Widget instance has a corresponding WidgetModel instance in the front-end.  The Widget and WidgetModel store the same state.  The widget framework ensures both models are kept in sync with each other.  If the WidgetModel is changed in the front-end, the Widget receives the same change in the kernel.  Vice versa, if the Widget in the kernel is changed, the WidgetModel in the front-end receives the same change.  There is no single source of truth, both models have the same precedence.  Although a notebook has the notion of cells, neither Widget or WidgetModel are bound to any single cell.</p>
+<p><img alt="synchronized state" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/state_sync.svg" /></p>
+</div>
+<div class="section" id="models-and-views">
+<h2>Models and Views<a class="headerlink" href="#models-and-views" title="永久链接至标题">¶</a></h2>
+<p>In order for the user to interact with widgets on a cell by cell basis, the WidgetModels are represented by WidgetViews.  Any single WidgetView is bound to a single cell.  Multiple WidgetViews can be linked to a single WidgetModel.  This is how you can redisplay the same Widget multiple times and it still works.  To accomplish this, the widget framework uses Backbone.js.  In a traditional MVC framework, the WidgetModel is the (M)odel, and the WidgetView is both the (V)iew and (C)ontroller. Meaning that, the views both display the state of the model and manipulate it.  Think about a slider control, it both displays the value and allows the user to change the value by dragging the slide handle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">IntSlider</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "550fd5d9817b453f8ebbb29a8cfcaa8e", "version_major": 2, "version_minor": 0}
+</script><script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "550fd5d9817b453f8ebbb29a8cfcaa8e", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "550fd5d9817b453f8ebbb29a8cfcaa8e", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p><img alt="model-view venn diagram" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/assoc.svg" /></p>
+</div>
+<div class="section" id="code-execution">
+<h2>Code execution<a class="headerlink" href="#code-execution" title="永久链接至标题">¶</a></h2>
+<p>The user code required to display a simple FloatSlider widget is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">FloatSlider</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">slider</span> <span class="o">=</span> <span class="n">FloatSlider</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">slider</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In order to understand how a widget is displayed, one must understand how code is executed in the Notebook.  Execution begins in the code cell.  A user event triggers the code cell to send an evaluate code message to the kernel, containing all of the code in the code cell.  This message is given a GUID, which the front-end associates to the code cell, and remembers it (<strong>important</strong>).</p>
+<p><img alt="execution-1" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/execute.svg" /></p>
+<p>Once that message is received by the kernel, the kernel immediately sends the front-end an “I’m busy” status message.  The kernel then proceeds to execute the code.</p>
+<p><img alt="execution-2" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/busy.svg" /></p>
+</div>
+<div class="section" id="model-construction">
+<h2>Model construction<a class="headerlink" href="#model-construction" title="永久链接至标题">¶</a></h2>
+<p>When a Widget is constructed in the kernel, the first thing that happens is that a comm is constructed and associated with the widget.  When the comm is constructed, it is given a GUID (globally unique identifier).  A comm-open message is sent to the front-end, with metadata stating that the comm is a widget comm and what the corresponding WidgetModel class is.</p>
+<p><img alt="model-construction" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/widgetcomm.svg" /></p>
+<p>The WidgetModel class is specified by module and name.  Require.js is then used to asynchronously load the WidgetModel class. The message triggers a comm to be created in the front-end with the same GUID as the back-end.  Then, the new comm gets passed into the WidgetManager in the front-end, which creates an instance of the WidgetModel class, linked to the comm.  Both the Widget and WidgetModel repurpose the comm GUID as their own.</p>
+<p><img alt="construction-2" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/widgetcomm2.svg" /></p>
+<p>Asynchronously, the kernel sends an initial state push, containing the initial state of the Widget, to the front-end, immediately after the comm-open message.  This state message may or may not be received by the time the WidgetModel is constructed.  Regardless, the message is cached and gets processed once the WidgetModel has been constructed.  The initial state push is what causes the WidgetModel in the front-end to become in sync with the Widget in the kernel.</p>
+<p><img alt="construction-3" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/state.svg" /></p>
+</div>
+<div class="section" id="displaying-a-view">
+<h2>Displaying a view<a class="headerlink" href="#displaying-a-view" title="永久链接至标题">¶</a></h2>
+<p>After the Widget has been constructed, it can be displayed.  Calling <code class="docutils literal notranslate"><span class="pre">display(widgetinstance)</span></code> causes a specially named repr method in the widget to run.  This method sends a message to the front-end that tells the front-end to construct and display a widget view.  The message is in response to the original code execution message, and the original message’s GUID is stored in the new message’s header.  When the front-end receives the message, it uses the original message’s GUID to determine what cell the new view should belong to.  Then, the view is created, using the WidgetView class specified in the WidgetModel’s state.  The same require.js method is used to load the view class.  Once the class is loaded, an instance of it is constructed, displayed in the right cell, and registers listeners for changes of the model.</p>
+<p><img alt="display a view" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/display.svg" /></p>
+</div>
+<div class="section" id="widget-skeleton">
+<h2>Widget skeleton<a class="headerlink" href="#widget-skeleton" title="永久链接至标题">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%javascript</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="mi">999</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">touch</span><span class="p">();</span>
+
+<span class="c1">/////////////////////////////////</span>
+
+<span class="k">this</span><span class="p">.</span><span class="nx">colorpicker</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;input&#39;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">colorpicker</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">colorpicker</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">this.model.get('count');
+this.model.set('count', 999);
+this.touch();
+
+/////////////////////////////////
+
+this.colorpicker = document.createElement('input');
+this.colorpicker.setAttribute('type', 'color');
+this.el.appendChild(this.colorpicker);
+</script></div>
+</div>
+<p>Since widgets exist in both the front-end and kernel, they consist of both Python (if the kernel is IPython) and Javascript code.  A boilerplate widget can be seen below:</p>
+<p>Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">DOMWidget</span>
+<span class="kn">from</span> <span class="nn">traitlets</span> <span class="kn">import</span> <span class="n">Unicode</span><span class="p">,</span> <span class="n">Int</span>
+ 
+<span class="k">class</span> <span class="nc">MyWidget</span><span class="p">(</span><span class="n">DOMWidget</span><span class="p">):</span>
+	<span class="n">_view_module</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;mywidget&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">_view_module_version</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;0.1.0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+	<span class="n">_view_name</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;MyWidgetView&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+	<span class="n">count</span> <span class="o">=</span> <span class="n">Int</span><span class="p">()</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>JavaScript:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">define</span><span class="p">(</span><span class="s1">&#39;mywidget&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;@jupyter-widgets/base&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">widgets</span><span class="p">)</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">MyWidgetView</span> <span class="o">=</span> <span class="nx">widgets</span><span class="p">.</span><span class="nx">DOMWidgetView</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    	<span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        	<span class="nx">MyWidgetView</span><span class="p">.</span><span class="nx">__super__</span><span class="p">.</span><span class="nx">render</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        	<span class="k">this</span><span class="p">.</span><span class="nx">_count_changed</span><span class="p">();</span>
+        	<span class="k">this</span><span class="p">.</span><span class="nx">listenTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span> <span class="s1">&#39;change:count&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_count_changed</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+    	<span class="p">},</span>
+ 
+    	<span class="nx">_count_changed</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        	<span class="kd">var</span> <span class="nx">old_value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">previous</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">);</span>
+        	<span class="kd">var</span> <span class="nx">new_value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">);</span>
+        	<span class="k">this</span><span class="p">.</span><span class="nx">el</span><span class="p">.</span><span class="nx">textContent</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">old_value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; -&gt; &#39;</span> <span class="o">+</span> <span class="nb">String</span><span class="p">(</span><span class="nx">new_value</span><span class="p">);</span>
+    	<span class="p">}</span>
+	<span class="p">});</span>
+ 
+	<span class="k">return</span> <span class="p">{</span>
+    	<span class="nx">MyWidgetView</span><span class="o">:</span> <span class="nx">MyWidgetView</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Describing the Python:</p>
+<p>The base widget classes are <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code> and <code class="docutils literal notranslate"><span class="pre">Widget</span></code>. The <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code> class represents a widget that is represented in the page as an HTML DOM element. The <code class="docutils literal notranslate"><span class="pre">Widget</span></code> class is more general and can be used for objects that may not live on the page as a DOM element (for example, a widget inheriting from <code class="docutils literal notranslate"><span class="pre">Widget</span></code> may represent a Javascript object).</p>
+<p><code class="docutils literal notranslate"><span class="pre">_view_module</span></code>, <code class="docutils literal notranslate"><span class="pre">_view_module_version</span></code>, and <code class="docutils literal notranslate"><span class="pre">_view_name</span></code> are how the front-end knows what view class to construct for the model.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sync=True</span></code> is what makes the traitlets behave like state.</p>
+<p>A similarly named <code class="docutils literal notranslate"><span class="pre">_model_module</span></code>, <code class="docutils literal notranslate"><span class="pre">_model_module_version</span></code>, and <code class="docutils literal notranslate"><span class="pre">_model_name</span></code> can be used to specify the corresponding WidgetModel.</p>
+<p><code class="docutils literal notranslate"><span class="pre">count</span></code> is an example of a custom piece of state.</p>
+<p>Describing the JavaScript:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">define</span></code> call asynchronously loads the specified dependencies, and then passes them in as arguments into the callback.  Here, the only dependency that is loaded is the base widget module.</p>
+<p>Custom views inherit from either <code class="docutils literal notranslate"><span class="pre">DOMWidgetView</span></code> or <code class="docutils literal notranslate"><span class="pre">WidgetView</span></code>. The <code class="docutils literal notranslate"><span class="pre">DOMWidgetView</span></code> class is for widgets that render themselves into a DOM element, and the <code class="docutils literal notranslate"><span class="pre">WidgetView</span></code> class does not make this assumption.</p>
+<p>Custom models inherit from <code class="docutils literal notranslate"><span class="pre">WidgetModel</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">render</span></code> method is what is called to render the view’s contents.  If the view is a <code class="docutils literal notranslate"><span class="pre">DOMWidgetView</span></code>, the <code class="docutils literal notranslate"><span class="pre">.el</span></code> attribute contains the DOM element that will be displayed on the page.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.listenTo</span></code> allows the view to listen to properties of the model for changes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">_count_changed</span></code> is an example of a method that could be used to handle model changes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">this.model</span></code> is how the corresponding model can be accessed.</p>
+<p><code class="docutils literal notranslate"><span class="pre">this.model.previous</span></code> will get the previous value of the trait.</p>
+<p><code class="docutils literal notranslate"><span class="pre">this.model.get</span></code> will get the current value of the trait.</p>
+<p><code class="docutils literal notranslate"><span class="pre">this.model.set</span></code> followed by <code class="docutils literal notranslate"><span class="pre">this.model.save_changes();</span></code> changes the model.<br />
+Use the view method <code class="docutils literal notranslate"><span class="pre">touch</span></code> instead of <code class="docutils literal notranslate"><span class="pre">model.save_changes</span></code> to associate the changes with the current view, thus associating any response messages with the view’s cell.</p>
+<p>The dictionary returned is the public members of the module.</p>
+</div>
+<div class="section" id="serialization-of-widget-attributes">
+<h2>Serialization of widget attributes<a class="headerlink" href="#serialization-of-widget-attributes" title="永久链接至标题">¶</a></h2>
+<p>Widget trait attributes tagged with <code class="docutils literal notranslate"><span class="pre">sync=True</span></code> are synchronized with the JavaScript model instance on the JavaScript side. For this reason, they need to be serialized into <code class="docutils literal notranslate"><span class="pre">json</span></code>.</p>
+<p>By default, basic Python types such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">dict</span></code> are simply be mapped to <code class="docutils literal notranslate"><span class="pre">Number</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code> and <code class="docutils literal notranslate"><span class="pre">Object</span></code>. For more complex types, serializers and de-serializers must be specified on both the Python side and the JavaScript side.</p>
+<div class="section" id="custom-serialization-and-de-serialization-on-the-python-side">
+<h3>Custom serialization and de-serialization on the Python side<a class="headerlink" href="#custom-serialization-and-de-serialization-on-the-python-side" title="永久链接至标题">¶</a></h3>
+<p>In many cases, a custom serialization must be specified for trait attributes. For example,</p>
+<ul class="simple">
+<li><p>if the trait attribute is not json serializable</p></li>
+<li><p>if the trait attribute contains data that is not needed by the JavaScript side.</p></li>
+</ul>
+<p>Custom serialization can be specified for a given trait attribute through the <code class="docutils literal notranslate"><span class="pre">to_json</span></code> and <code class="docutils literal notranslate"><span class="pre">from_json</span></code> metadata. These must be functions that take two arguments</p>
+<ul class="simple">
+<li><p>the value to be [de]serialized</p></li>
+<li><p>the instance of the underlying widget model.</p></li>
+</ul>
+<p>In most cases, the second argument is not used in the implementation of the serializer.</p>
+<p><strong>Example</strong></p>
+<p>For example, in the case of the <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">DatePicker</span></code> widget, the declaration is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="n">Datetime</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">allow_none</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">to_json</span><span class="o">=</span><span class="n">datetime_to_json</span><span class="p">,</span> <span class="n">from_json</span><span class="o">=</span><span class="n">datetime_from_json</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">datetime_to_json(value,</span> <span class="pre">widget)</span></code> and <code class="docutils literal notranslate"><span class="pre">datetime_from_json(value,</span> <span class="pre">widget)</span></code> return or handle json data-structures that are amenable to the front-end.</p>
+<p><strong>The case of parent-child relationships between widget models</strong></p>
+<p>When a widget model holds other widget models, you must use the serializers and deserializers provided in ipywidgets packed into the <code class="docutils literal notranslate"><span class="pre">widget_serialization</span></code> dictionary.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">HBox</span></code> widget declares its <code class="docutils literal notranslate"><span class="pre">children</span></code> attribute in the following fashion:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.widget</span> <span class="kn">import</span> <span class="n">widget_serialization</span>
+
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+
+<span class="n">children</span> <span class="o">=</span> <span class="n">Tuple</span><span class="p">()</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">widget_serialization</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The actual result of the serialization of a widget model is a string holding the widget id prefixed with <code class="docutils literal notranslate"><span class="pre">&quot;IPY_MODEL_&quot;</span></code>.</p>
+</div>
+<div class="section" id="custom-serialization-and-de-serialization-on-the-javascript-side">
+<h3>Custom serialization and de-serialization on the JavaScript side<a class="headerlink" href="#custom-serialization-and-de-serialization-on-the-javascript-side" title="永久链接至标题">¶</a></h3>
+<p>In order to mirror the custom serializer and deserializer of the Python side, symmetric methods must be provided on the JavaScript side.</p>
+<p>On the JavaScript side, serializers are specified through the <code class="docutils literal notranslate"><span class="pre">serializers</span></code> class-level attribute of the widget model.</p>
+<p>They are generally specified in the following fashion, extending the dictionary of serializers and serializers of the base class. In the following example, which comes from the <code class="docutils literal notranslate"><span class="pre">DatePicker</span></code>, the deserializer for the <code class="docutils literal notranslate"><span class="pre">value</span></code> attribute is specified.</p>
+<div class="highlight-JavaScript notranslate"><div class="highlight"><pre><span></span><span class="kr">static</span> <span class="nx">serializers</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">serialize</span><span class="o">:</span> <span class="nx">serialize_datetime</span><span class="p">,</span>
+        <span class="nx">deserialize</span><span class="o">:</span> <span class="nx">deserialize_datetime</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="nx">BaseModel</span><span class="p">.</span><span class="nx">serializers</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Custom serializers are functions taking two arguments: the value of the object to [de]serialize, and the widget manager. In most cases, the widget manager is actually not used.</p>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="永久链接至标题">¶</a></h2>
+<p>Because the API of any given widget <strong>must exist in the kernel</strong>, the kernel is the natural place for widgets to be installed.  However, <strong>kernels, as of now, don’t host static assets</strong>.  Instead, static assets are hosted by the webserver, which is the entity that sits between the kernel and the front-end.  This is a problem because it means widgets have components that need to be <strong>installed both in the webserver and the kernel</strong>.  The kernel components are easy to install, because you can rely on the language’s built-in tools.  The static assets for the webserver complicate things, because an extra step is required to let the webserver know where the assets are.</p>
+</div>
+<div class="section" id="static-assets">
+<h2>Static assets<a class="headerlink" href="#static-assets" title="永久链接至标题">¶</a></h2>
+<p>In the case of the classic Jupyter notebook, static assets are made available to the Jupyter notebook in the form of a Jupyter extension. JavaScript bundles are copied in a directory accessible through the <code class="docutils literal notranslate"><span class="pre">nbextensions/</span></code> handler.  Nbextensions also have a mechanism for running your code on page load.  This can be set using the install-nbextension command.</p>
+</div>
+<div class="section" id="distribution">
+<h2>Distribution<a class="headerlink" href="#distribution" title="永久链接至标题">¶</a></h2>
+<p>Two template projects are available in the form of cookiecutters:</p>
+<ul class="simple">
+<li><p>JavaScript: <a class="reference external" href="https://github.com/jupyter-widgets/widget-cookiecutter">https://github.com/jupyter-widgets/widget-cookiecutter</a></p></li>
+<li><p>TypeScript: <a class="reference external" href="https://github.com/jupyter-widgets/widget-ts-cookiecutter">https://github.com/jupyter-widgets/widget-ts-cookiecutter</a></p></li>
+</ul>
+<p>These cookiecutters are meant to help custom widget authors get started with the packaging and the distribution of Jupyter interactive widgets.</p>
+<p>They produce a project for a widget library following the current best practices for using interactive widgets. An implementation for a placeholder &quot;Hello World&quot; widget is provided.</p>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"0544a9514ee849c78c39e3a869c4268c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "550fd5d9817b453f8ebbb29a8cfcaa8e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "IntSliderModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_0544a9514ee849c78c39e3a869c4268c", "max": 100, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_6c860411db90410ab116271769bfee31", "value": 0}}, "6c860411db90410ab116271769bfee31": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "SliderStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./user-guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="08_using-interact.html" title="previous page">Using Interact</a>
+    <a class='right-next' id="next-link" href="10_widget-asynchronous.html" title="next page">Asynchronous Widgets</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By xinetzone<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
