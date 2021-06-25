@@ -586,25 +586,25 @@ The children (e.g. direct descendants) of the grid container. Here the item elem
 
 The dividing lines that make up the structure of the grid. They can be either vertical ("column grid lines") or horizontal ("row grid lines") and reside on either side of a row or column. Here the yellow line is an example of a column grid line.
 
-![grid-line](images/grid-line.png)
+![grid-line](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-line.png)
 
 **Grid Track**
 
 The space between two adjacent grid lines. You can think of them like the columns or rows of the grid. Here's the grid track between the second and third row grid lines.
 
-![grid-track](images/grid-track.png)
+![grid-track](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-track.png)
 
 **Grid Cell**
 
 The space between two adjacent row and two adjacent column grid lines. It's a single "unit" of the grid. Here's the grid cell between row grid lines 1 and 2, and column grid lines 2 and 3.
 
-![grid-cell](images/grid-cell.png)
+![grid-cell](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-cell.png)
 
 **Grid Area**
 
 The total space surrounded by four grid lines. A grid area may be comprised of any number of grid cells. Here's the grid area between row grid lines 1 and 3, and column grid lines 1 and 3.
 
-![grid-area](images/grid-area.png)
+![grid-area](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-area.png)
 
 ### Properties of the parent
 
@@ -732,7 +732,7 @@ Examples:
 }
 ```
 
-![grid-start-end-a](images/grid-start-end-a.png)
+![grid-start-end-a](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-start-end-a.png)
 
 ```css
 .item-b {
@@ -741,7 +741,7 @@ Examples:
 }
 ```
 
-![grid-start-end-b](images/grid-start-end-b.png)
+![grid-start-end-b](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-start-end-b.png)
 
 If no `grid-column` / `grid-row` is declared, the item will span 1 track by default.
 
@@ -780,7 +780,7 @@ As the short-shorthand for `grid-row-start` + `grid-column-start` + `grid-row-en
 }
 ```
 
-![grid-start-end-d](images/grid-start-end-d.png)
+![grid-start-end-d](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-start-end-d.png)
 
 **justify-self**
 
@@ -807,7 +807,7 @@ Examples:
 }
 ```
 
-![Example of `justify-self` set to start](images/grid-justify-self-start.png)
+![Example of `justify-self` set to start](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-start.png)
 
 ```css
 .item-a {
@@ -815,7 +815,7 @@ Examples:
 }
 ```
 
-![Example of `justify-self` set to end](images/grid-justify-self-end.png)
+![Example of `justify-self` set to end](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-end.png)
 
 ```css
 .item-a {
@@ -823,7 +823,7 @@ Examples:
 }
 ```
 
-![Example of `justify-self` set to center](images/grid-justify-self-center.png)
+![Example of `justify-self` set to center](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-center.png)
 
 ```css
 .item-a {
@@ -831,7 +831,7 @@ Examples:
 }
 ```
 
-![Example of `justify-self` set to stretch](images/grid-justify-self-stretch.png)
+![Example of `justify-self` set to stretch](https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/grid-justify-self-stretch.png)
 
 To set alignment for *all* the items in a grid, this behavior can also be set on the grid container via the `justify-items` property.
 
