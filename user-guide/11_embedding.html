@@ -95,7 +95,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="测试" href="test.html" />
+    <link rel="next" title="Weather map" href="layout-example.html" />
     <link rel="prev" title="Asynchronous Widgets" href="10_widget-asynchronous.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -153,7 +153,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_widgets-list.html">
+    <a class="reference internal" href="02_widget-list.html">
      小部件清单
     </a>
    </li>
@@ -174,7 +174,7 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06_layout-templates.html">
-     Using Layout Templates
+     使用 Layout 模板
     </a>
    </li>
    <li class="toctree-l2">
@@ -200,6 +200,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Embedding Jupyter Widgets in Other Contexts than the Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="layout-example.html">
+     Weather map
     </a>
    </li>
    <li class="toctree-l2">
@@ -283,7 +288,10 @@ commentsRunWhenDOMLoaded(addUtterances);
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/user-guide/11_embedding.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/user-guide/11_embedding.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -320,6 +328,23 @@ commentsRunWhenDOMLoaded(addUtterances);
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/xinetzone/ipywidgets-book/main?urlpath=tree/docs/user-guide/11_embedding.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
 
         </div>
 
@@ -414,7 +439,7 @@ commentsRunWhenDOMLoaded(addUtterances);
               <div>
                 
   <div class="section" id="embedding-jupyter-widgets-in-other-contexts-than-the-notebook">
-<h1>Embedding Jupyter Widgets in Other Contexts than the Notebook<a class="headerlink" href="#embedding-jupyter-widgets-in-other-contexts-than-the-notebook" title="永久链接至标题">¶</a></h1>
+<span id="jupyter-embedding"></span><h1>Embedding Jupyter Widgets in Other Contexts than the Notebook<a class="headerlink" href="#embedding-jupyter-widgets-in-other-contexts-than-the-notebook" title="永久链接至标题">¶</a></h1>
 <p>参考：<a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/embedding.html">Embedding Jupyter Widgets in Other Contexts than the Notebook</a></p>
 <p>Jupyter interactive widgets can be serialized and embedded into</p>
 <ul class="simple">
@@ -720,16 +745,16 @@ the <code class="docutils literal notranslate"><span class="pre">web3</span></co
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "ai"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "ai",
             path: "./user-guide"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ai'</script>
 
               </div>
               
@@ -737,7 +762,7 @@ the <code class="docutils literal notranslate"><span class="pre">web3</span></co
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="10_widget-asynchronous.html" title="previous page">Asynchronous Widgets</a>
-    <a class='right-next' id="next-link" href="test.html" title="next page">测试</a>
+    <a class='right-next' id="next-link" href="layout-example.html" title="next page">Weather map</a>
 
         </div>
         

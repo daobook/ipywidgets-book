@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather map &#8212; 品味人生</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3mobile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3pro.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/xin-css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "xinetzone/ipywidgets-book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/page-logo.jfif"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="测试" href="test.html" />
+    <link rel="prev" title="Embedding Jupyter Widgets in Other Contexts than the Notebook" href="11_embedding.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">品味人生</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  教程
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   用户手册
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="00_install.html">
+     安装
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01_intro.html">
+     简单的小部件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02_widget-list.html">
+     小部件清单
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03_output-widget.html">
+     Output 小部件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_widget-events.html">
+     小部件事件
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05_widget-styling.html">
+     布局和样式
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06_layout-templates.html">
+     使用 Layout 模板
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07_widget-custom.html">
+     Building a Custom Widget -  Email widget
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08_using-interact.html">
+     Using Interact
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="09_widget-low-level.html">
+     Low Level Widget Tutorial
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="10_widget-asynchronous.html">
+     Asynchronous Widgets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11_embedding.html">
+     Embedding Jupyter Widgets in Other Contexts than the Notebook
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Weather map
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test.html">
+     测试
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  附录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faqs.html">
+   常见问题
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <div class="w3-padding w3-card-4 w3-pale-green">
+  <a href="https://github.com/xinetzone" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+      data-position="top" data-delay="50">
+      <i class="fab fa-github"></i>
+  </a>
+  <a href="mailto:q735613050@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top"
+      data-delay="50">
+      <i class="fas fa-envelope-open"></i>
+  </a>
+  <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=735613050" class="tooltipped"
+      target="_blank" data-tooltip="QQ联系我: 735613050" data-position="top" data-delay="50">
+      <i class="fab fa-qq"></i>
+  </a>
+  <a href="https://www.zhihu.com/people/liu-xin-wei-55" class="tooltipped" target="_blank"
+      data-tooltip="关注我的知乎: liu-xin-wei-55" data-position="top" data-delay="50">
+      <i class="fab fa-zhihu1">知</i>
+  </a>
+  <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/xinet" class="tooltipped"
+      data-tooltip="领英联系我: xinet" data-position="top" data-delay="50">
+      <i class="fab fa-linkedin"></i>
+  </a>
+  <div><a href="https://github.com/xinetzone/ipywidgets-book">Jupyter Book</a> 版权所有</div>
+</div> 
+
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/user-guide/layout-example.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/xinetzone/ipywidgets-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/xinetzone/ipywidgets-book/issues/new?title=Issue%20on%20page%20%2Fuser-guide/layout-example.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/xinetzone/ipywidgets-book/main?urlpath=tree/docs/user-guide/layout-example.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="weather-map">
+<span id="jupyter-layout-example"></span><h1>Weather map<a class="headerlink" href="#weather-map" title="永久链接至标题">¶</a></h1>
+<p>This notebook shows an example of use of the <code class="docutils literal notranslate"><span class="pre">AppLayout</span></code> template, which is documented in <a class="reference internal" href="06_layout-templates.html#jupyter-layout-templates"><span class="std std-ref">Layout Templates</span></a> notebook. You can check that notebook for further explanation.</p>
+<p>This notebook depends on extra packages:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/bloomberg/bqplot">bqplot</a> - widget-based plotting library,</p></li>
+<li><p><a class="reference external" href="https://github.com/jupyter-widgets/ipyleaflet">ipyleaflet</a> - cartography widget based on leaflet.js</p></li>
+</ul>
+<p>If you also would like to see a color weather map, you will need to obtain an API key from <a class="reference external" href="https://openweathermap.org/">OpenWeahterMap</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipyleaflet</span> <span class="k">import</span> <span class="n">Map</span><span class="p">,</span> <span class="n">basemaps</span><span class="p">,</span> <span class="n">basemap_to_tiles</span><span class="p">,</span> <span class="n">Heatmap</span><span class="p">,</span> <span class="n">TileLayer</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">AppLayout</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Layout</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">Output</span><span class="p">,</span> <span class="n">Textarea</span><span class="p">,</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Label</span>
+<span class="kn">import</span> <span class="nn">bqplot</span> <span class="k">as</span> <span class="nn">bq</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">date_range</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To see map overlays obtain your API key free of charge from <a class="reference external" href="https://openweathermap.org/">OpenWeatherMap</a> and paste it below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OWM_API_KEY</span> <span class="o">=</span> <span class="s2">&quot;PASTE_YOUR_OWM_API_KEY_HERE&quot;</span> <span class="c1">#openweathermap API key</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">52</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">basemap</span><span class="o">=</span><span class="n">basemaps</span><span class="o">.</span><span class="n">Hydda</span><span class="o">.</span><span class="n">Full</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Hydda&#39;</span> <span class="p">:</span> <span class="n">basemaps</span><span class="o">.</span><span class="n">Hydda</span><span class="o">.</span><span class="n">Full</span><span class="p">,</span>
+        <span class="s1">&#39;Esri&#39;</span> <span class="p">:</span> <span class="n">basemaps</span><span class="o">.</span><span class="n">Esri</span><span class="o">.</span><span class="n">DeLorme</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h1&gt;Fictional World Weather&lt;/h1&gt;&quot;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">))</span>
+<span class="n">header</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">text_align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span>
+<span class="n">basemap_selector</span> <span class="o">=</span> <span class="n">Dropdown</span><span class="p">(</span> <span class="n">options</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">maps</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+                            <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">))</span>
+
+<span class="n">heatmap_selector</span> <span class="o">=</span> <span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;Precipitation&#39;</span><span class="p">),</span>
+                            <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basemap_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Hydda&#39;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">security_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">150</span><span class="p">))</span> <span class="o">+</span> <span class="mf">100.</span>
+
+<span class="n">dates</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;01-01-2007&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+
+<span class="n">dt_x</span> <span class="o">=</span> <span class="n">bq</span><span class="o">.</span><span class="n">DateScale</span><span class="p">()</span>
+<span class="n">sc_y</span> <span class="o">=</span> <span class="n">bq</span><span class="o">.</span><span class="n">LinearScale</span><span class="p">()</span>
+
+<span class="n">time_series</span> <span class="o">=</span> <span class="n">bq</span><span class="o">.</span><span class="n">Lines</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">security_1</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">dt_x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">sc_y</span><span class="p">})</span>
+<span class="n">ax_x</span> <span class="o">=</span> <span class="n">bq</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">dt_x</span><span class="p">)</span>
+<span class="n">ax_y</span> <span class="o">=</span> <span class="n">bq</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">sc_y</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">bq</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">marks</span><span class="o">=</span><span class="p">[</span><span class="n">time_series</span><span class="p">],</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="n">ax_x</span><span class="p">,</span> <span class="n">ax_y</span><span class="p">],</span>
+                <span class="n">fig_margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">HTML</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AppLayout</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">m</span><span class="p">,</span> 
+          <span class="n">header</span><span class="o">=</span><span class="n">header</span><span class="p">,</span>
+          <span class="n">left_sidebar</span><span class="o">=</span><span class="n">VBox</span><span class="p">([</span><span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Basemap:&quot;</span><span class="p">),</span>
+                             <span class="n">basemap_selector</span><span class="p">,</span>
+                             <span class="n">Label</span><span class="p">(</span><span class="s2">&quot;Overlay:&quot;</span><span class="p">),</span>
+                             <span class="n">heatmap_selector</span><span class="p">]),</span>
+          <span class="n">right_sidebar</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span>
+          <span class="n">footer</span><span class="o">=</span><span class="n">out</span><span class="p">,</span>
+          <span class="n">pane_widths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;80px&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="n">pane_heights</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;80px&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+          <span class="n">height</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span><span class="p">,</span>
+          <span class="n">grid_gap</span><span class="o">=</span><span class="s2">&quot;30px&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "22a2c0e86b4d4f1fb30c544f782d1104", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">90</span><span class="p">:</span><span class="mi">90</span><span class="p">:</span><span class="mi">10</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mi">180</span><span class="p">:</span><span class="mi">180</span><span class="p">:</span><span class="mi">20</span><span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_log</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+    <span class="n">max_rows</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">max_rows</span><span class="p">:</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;&lt;h4&gt;Activity log&lt;/h4&gt;&lt;ul&gt;</span><span class="si">{}</span><span class="s1">&lt;/ul&gt;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">rows</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">generate_temp_series</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">heatmap_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;Precipitation&#39;</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">150</span><span class="p">))</span> <span class="o">+</span> <span class="mf">100.</span>
+    <span class="k">elif</span> <span class="n">heatmap_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">:</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">dist</span>
+        <span class="n">dist</span><span class="p">[</span><span class="n">dist</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">temps</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">)</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">time_series</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">temp</span>
+    
+<span class="k">def</span> <span class="nf">handle_interaction</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;click&#39;</span><span class="p">:</span>
+        <span class="n">generate_temp_series</span><span class="p">(</span><span class="o">*</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">])</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> Selected coordinates: </span><span class="si">%s</span><span class="s1">, Temp: </span><span class="si">%d</span><span class="s1"> C Precipitation: </span><span class="si">%d</span><span class="s1"> mm</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">],</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">add_log</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">on_interaction</span><span class="p">(</span><span class="n">handle_interaction</span><span class="p">)</span> 
+
+<span class="k">def</span> <span class="nf">on_map_selected</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">basemap_to_tiles</span><span class="p">(</span><span class="n">maps</span><span class="p">[</span><span class="n">basemap_selector</span><span class="o">.</span><span class="n">value</span><span class="p">]),</span> <span class="n">weather_maps</span><span class="p">[</span><span class="n">heatmap_selector</span><span class="o">.</span><span class="n">value</span><span class="p">]]</span>
+    
+<span class="n">basemap_selector</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_map_selected</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">heatmap_selector</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">on_map_selected</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp</span> <span class="o">=</span> <span class="n">TileLayer</span><span class="p">(</span><span class="n">min_zoom</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_zoom</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://tile.openweathermap.org/map/temp_new/</span><span class="si">{z}</span><span class="s1">/</span><span class="si">{x}</span><span class="s1">/</span><span class="si">{y}</span><span class="s1">.png?appid=&#39;</span><span class="o">+</span><span class="n">OWM_API_KEY</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;owm&#39;</span><span class="p">,</span> <span class="n">attribute</span><span class="o">=</span><span class="s1">&#39;me&#39;</span><span class="p">)</span>
+<span class="n">precipitation</span> <span class="o">=</span> <span class="n">TileLayer</span><span class="p">(</span><span class="n">min_zoom</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_zoom</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://tile.openweathermap.org/map/precipitation_new/</span><span class="si">{z}</span><span class="s1">/</span><span class="si">{x}</span><span class="s1">/</span><span class="si">{y}</span><span class="s1">.png?appid=&#39;</span><span class="o">+</span><span class="n">OWM_API_KEY</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;owm&#39;</span><span class="p">,</span> <span class="n">attribute</span><span class="o">=</span><span class="s1">&#39;me&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather_maps</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Temperature&#39;</span> <span class="p">:</span> <span class="n">temp</span><span class="p">,</span>
+                <span class="s1">&#39;Precipitation&#39;</span> <span class="p">:</span> <span class="n">precipitation</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">weather_maps</span><span class="p">[</span><span class="n">heatmap_selector</span><span class="o">.</span><span class="n">value</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"02e136b8b7fe42a6b1d1da5ab7e8fc7a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_285d38f647984d7a901d6600ca3bb8c3", "placeholder": "\u200b", "style": "IPY_MODEL_ba349bae8ec94ba98783dfb0a9c1ec9c", "value": ""}}, "1f14a762218f45acb7f34e2ce9188fa3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "22a2c0e86b4d4f1fb30c544f782d1104": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "GridBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "GridBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "GridBoxView", "box_style": "", "children": ["IPY_MODEL_82b861a6c6ca45448c634ffbf7a4a9c4", "IPY_MODEL_02e136b8b7fe42a6b1d1da5ab7e8fc7a", "IPY_MODEL_40ead34d59ea489f9facf452b2b44e7d", "IPY_MODEL_abd09fdadd4341d5882b6db38096243e", "IPY_MODEL_24438e10ade245ad9d958346a5d2d35c"], "layout": "IPY_MODEL_70f1717e086b4af8b62136b3e01799b0"}}, "22d056563e994423a767fa82cd0e9929": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "24438e10ade245ad9d958346a5d2d35c": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [52, 10], "close_popup_on_click": true, "controls": ["IPY_MODEL_efb9aa78ce41424f89fa42c759cf56a1", "IPY_MODEL_4abb6b50e8ce4165b300630b7cba7380"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_7acfca22b90d472d8b0f614a61597397", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_f6b077844f6d4cd6b96b9efc2470c6ec", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_9ba845336a10435fbf6cf56960bfab2c", "IPY_MODEL_b3a20c02b5664ea585efd080fbe2d5ec"], "layout": "IPY_MODEL_c65151c5dabd494ebdf1fd5c819c99d8", "left": 9007199254740991.0, "max_zoom": 18.0, "min_zoom": 1.0, "modisdate": "yesterday", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap", "zoom_start"], "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_523d1ad43c8945689564542ced8e9cd0", "tap": true, "tap_tolerance": 15, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 5.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0, "zoom_start": 12.0}}, "285d38f647984d7a901d6600ca3bb8c3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "footer", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "auto"}}, "30957e9687dc4531a3af8535dd5592f3": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "39b97dbeafa74e4fabff10aff0236095": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DropdownModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["Temperature", "Precipitation"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "", "description_tooltip": null, "disabled": false, "index": 0, "layout": "IPY_MODEL_4665840972894cb9945f10fdd1762d52", "style": "IPY_MODEL_d41702f44f364a4cbcea3da834710b07"}}, "40ead34d59ea489f9facf452b2b44e7d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "VBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_68632d82df794d95bea7842a2e6ae5a4", "IPY_MODEL_a421900972bd47868954dd0522af7d10", "IPY_MODEL_87373cc031b147d0939d304ca29d0adc", "IPY_MODEL_39b97dbeafa74e4fabff10aff0236095"], "layout": "IPY_MODEL_eab1a61e24a24ae7a5e86a8362429732"}}, "4665840972894cb9945f10fdd1762d52": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "auto"}}, "4abb6b50e8ce4165b300630b7cba7380": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "4e7441b7504048caab17cac701992355": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "AxisModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "AxisModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "Axis", "color": null, "grid_color": null, "grid_lines": "solid", "label": "", "label_color": null, "label_location": "middle", "label_offset": null, "num_ticks": null, "offset": {}, "orientation": "horizontal", "scale": "IPY_MODEL_8b4505b141904b88acce00ea1a024337", "side": null, "tick_format": null, "tick_rotate": 0, "tick_style": {}, "tick_values": null, "visible": true}}, "523d1ad43c8945689564542ced8e9cd0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "grab"}}, "68632d82df794d95bea7842a2e6ae5a4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "LabelModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "LabelModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "LabelView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_93fa794dc2b34ec588f04bcff65f4981", "placeholder": "\u200b", "style": "IPY_MODEL_1f14a762218f45acb7f34e2ce9188fa3", "value": "Basemap:"}}, "70f1717e086b4af8b62136b3e01799b0": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": "30px", "grid_row": null, "grid_template_areas": "\"header header header\"\n\"left-sidebar center right-sidebar\"\n\"footer footer footer\"", "grid_template_columns": "80px 1fr 1fr", "grid_template_rows": "80px 4fr 1fr", "height": "600px", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7acfca22b90d472d8b0f614a61597397": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "grab"}}, "82b861a6c6ca45448c634ffbf7a4a9c4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_972357cf1e1641ea8f3f6e2331b48a2c", "placeholder": "\u200b", "style": "IPY_MODEL_acfdd6ccf26d4346a3a6eeebcc381f9e", "value": "<h1>Fictional World Weather</h1>"}}, "87373cc031b147d0939d304ca29d0adc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "LabelModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "LabelModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "LabelView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_30957e9687dc4531a3af8535dd5592f3", "placeholder": "\u200b", "style": "IPY_MODEL_22d056563e994423a767fa82cd0e9929", "value": "Overlay:"}}, "8b4505b141904b88acce00ea1a024337": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "DateScaleModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "DateScaleModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "DateScale", "allow_padding": true, "max": null, "min": null, "reverse": false}}, "8bb8aa53bd88405fa9e8a7f42b593d39": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "93fa794dc2b34ec588f04bcff65f4981": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "972357cf1e1641ea8f3f6e2331b48a2c": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "header", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "9ba845336a10435fbf6cf56960bfab2c": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletTileLayerView", "attribution": "Tiles courtesy of <a href=\"http://openstreetmap.se/\" target=\"_blank\">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>", "base": true, "bottom": true, "detect_retina": false, "loading": false, "max_native_zoom": 18, "max_zoom": 18, "min_native_zoom": 0, "min_zoom": 1, "name": "Hydda.Full", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "tile_size": 256, "tms": false, "url": "http://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png", "visible": true}}, "a421900972bd47868954dd0522af7d10": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DropdownModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["Hydda", "Esri"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "", "description_tooltip": null, "disabled": false, "index": 0, "layout": "IPY_MODEL_c57446c677354586b0be6aee11af093a", "style": "IPY_MODEL_8bb8aa53bd88405fa9e8a7f42b593d39"}}, "a63519c5ecdf478aa440202a58fdf7dc": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "LinearScaleModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "LinearScaleModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "LinearScale", "allow_padding": false, "max": 1.0, "mid_range": 0.8, "min": 0.0, "min_range": 0.6, "reverse": false, "stabilized": false}}, "abd09fdadd4341d5882b6db38096243e": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "FigureModel", "state": {"_dom_classes": [], "_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "FigureModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "Figure", "animation_duration": 0, "axes": ["IPY_MODEL_4e7441b7504048caab17cac701992355", "IPY_MODEL_f07f072072094f77a47739c3d482a73c"], "background_style": {}, "fig_margin": {"bottom": 80, "left": 30, "right": 20, "top": 0}, "interaction": null, "layout": "IPY_MODEL_ff63ce0d84814ce384e8656841644ea1", "legend_location": "top-right", "legend_style": {}, "legend_text": {}, "marks": ["IPY_MODEL_c2ccbc08a7584ddd88d4e9d7b94dfc64"], "max_aspect_ratio": 100.0, "min_aspect_ratio": 0.01, "padding_x": 0.0, "padding_y": 0.025, "pixel_ratio": null, "scale_x": "IPY_MODEL_ea2ee71063a54998ac1dd5c7432e62e0", "scale_y": "IPY_MODEL_a63519c5ecdf478aa440202a58fdf7dc", "theme": "classic", "title": "", "title_style": {}}}, "acfdd6ccf26d4346a3a6eeebcc381f9e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "b3a20c02b5664ea585efd080fbe2d5ec": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletTileLayerView", "attribution": "Map data (c) <a href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors", "base": false, "bottom": true, "detect_retina": false, "loading": false, "max_native_zoom": 18, "max_zoom": 18, "min_native_zoom": 0, "min_zoom": 1, "name": "owm", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "tile_size": 256, "tms": false, "url": "https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=PASTE_YOUR_OWM_API_KEY_HERE", "visible": true}}, "ba349bae8ec94ba98783dfb0a9c1ec9c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c2ccbc08a7584ddd88d4e9d7b94dfc64": {"buffers": [{"data": "AACASa/9cEIAAECvAf5wQgAAABVU/nBCAADAeqb+cEIAAIDg+P5wQgAAQEZL/3BCAAAArJ3/cEIAAMAR8P9wQgAAgHdCAHFCAABA3ZQAcUIAAABD5wBxQgAAwKg5AXFCAACADowBcUIAAEB03gFxQgAAANowAnFCAADAP4MCcUIAAICl1QJxQgAAQAsoA3FCAAAAcXoDcUIAAMDWzANxQgAAgDwfBHFCAABAonEEcUIAAAAIxARxQgAAwG0WBXFCAACA02gFcUIAAEA5uwVxQgAAAJ8NBnFCAADABGAGcUIAAIBqsgZxQgAAQNAEB3FCAAAANlcHcUIAAMCbqQdxQgAAgAH8B3FCAABAZ04IcUIAAADNoAhxQgAAwDLzCHFCAACAmEUJcUIAAED+lwlxQgAAAGTqCXFCAADAyTwKcUIAAIAvjwpxQgAAQJXhCnFCAAAA+zMLcUIAAMBghgtxQgAAgMbYC3FCAABALCsMcUIAAACSfQxxQgAAwPfPDHFCAACAXSINcUIAAEDDdA1xQgAAACnHDXFCAADAjhkOcUIAAID0aw5xQgAAQFq+DnFCAAAAwBAPcUIAAMAlYw9xQgAAgIu1D3FCAABA8QcQcUIAAABXWhBxQgAAwLysEHFCAACAIv8QcUIAAECIURFxQgAAAO6jEXFCAADAU/YRcUIAAIC5SBJxQgAAQB+bEnFCAAAAhe0ScUIAAMDqPxNxQgAAgFCSE3FCAABAtuQTcUIAAAAcNxRxQgAAwIGJFHFCAACA59sUcUIAAEBNLhVxQgAAALOAFXFCAADAGNMVcUIAAIB+JRZxQgAAQOR3FnFCAAAASsoWcUIAAMCvHBdxQgAAgBVvF3FCAABAe8EXcUIAAADhExhxQgAAwEZmGHFCAACArLgYcUIAAEASCxlxQgAAAHhdGXFCAADA3a8ZcUIAAIBDAhpxQgAAQKlUGnFCAAAAD6cacUIAAMB0+RpxQgAAgNpLG3FCAABAQJ4bcUIAAACm8BtxQgAAwAtDHHFCAACAcZUccUIAAEDX5xxxQgAAAD06HXFCAADAoowdcUIAAIAI3x1xQgAAQG4xHnFCAAAA1IMecUIAAMA51h5xQgAAgJ8oH3FCAABABXsfcUIAAABrzR9xQgAAwNAfIHFCAACANnIgcUIAAECcxCBxQgAAAAIXIXFCAADAZ2khcUIAAIDNuyFxQgAAQDMOInFCAAAAmWAicUIAAMD+siJxQgAAgGQFI3FCAABAylcjcUIAAAAwqiNxQgAAwJX8I3FCAACA+04kcUIAAEBhoSRxQgAAAMfzJHFCAADALEYlcUIAAICSmCVxQgAAQPjqJXFCAAAAXj0mcUIAAMDDjyZxQgAAgCniJnFCAABAjzQncUIAAAD1hidxQgAAwFrZJ3FCAACAwCsocUIAAEAmfihxQgAAAIzQKHFCAADA8SIpcUIAAIBXdSlxQgAAQL3HKXFCAAAAIxoqcUIAAMCIbCpxQgAAgO6+KnFCAABAVBErcUIAAAC6YytxQgAAwB+2K3FCAACAhQgscUIAAEDrWixxQgAAAFGtLHFCAADAtv8scUIAAIAcUi1xQgAAQIKkLXFC", "encoding": "base64", "path": ["x", "value"]}, {"data": "GMv1Ybz9WEDCOEjXYm9ZQFh+d4KpMFlARF1DoEXjWEBzex50TkhZQJG8lzDkPllA7BUdTOIdWUBjIwzDdy9ZQEFnnWPeKVlAKWMGkFEIWUCeXHkgqfFYQBc8OgWBUllAZiT8OTVtWUBp2oQGizdZQIJ8plW9U1lAWpvPXviEWUBxeYyI3i1ZQMbsbt1wK1lAHSkpdTNGWUBOzhhIY+FYQC3cBv7mwFhAqm9NrVCdWECx9DuKqWlYQN358SVKqFhA3jAOZOFAWEAzYAyNpT1YQEDkyGh1hVhAvoLvo+KZWEBs92BoIGVYQENqvy9N01hA40HZWEtHWUD4CNW9NVFZQMViXaalFVlAS08TJvVCWUA6wnWMUYBZQHBps8Cvn1lAi8Oe2wu8WUCsbWhNs+NZQLkrlc644llA0OQAePE1WkBYI5XVkjRaQFVjXqDjUVpAHB1gW2EXWkDWIUlHAW1aQKdalkt2mFpAGy4nziRfWkDO8JF9GqxaQCLYVPpwbFpAkDrmPu0oWkDhMO6QBQ9aQK4vEZ4Ns1lADY9hS4RcWUD3bafe8MFZQKYgLbKV6FlApGVAQbhXWUDVVJXkKlFZQMw8r9HSDVpApUzyfN/uWUCIX9aosRdaQEObfA6dVlpAnOdy6f4XWkDaCxXFlXlaQEwx+jL5hFpAu9TaQBOZWkDVraBIeUZaQPRlTg5xJlpApkwuy+m3WkBQ/vatMeVaQBU3U71NS1tAS69bfG9EW0BdE2zzkHpbQHBpOVrD3FtAm5bWl6faW0Ctw3kJVuNbQP6Y8lIqp1tABQn9cN4dW0B/rHRq9hNbQNbQbEqva1tAa8IK2LSlW0BT8Vrq+sZbQFtwZC1l2ltAeMpYoibdW0AY4GEefNZbQK1sGxOEkVtAPL4Ao/BgW0BzaW2kHldbQDW6jMBIQVtAleOzNWw1W0A2H9I7CC5bQK8rNyKgKltALeSUe7RhW0BWUoEkkYVbQMHV/glno1tAJLUbQuK3W0BCy8QV7hBcQEmdOCJ9xltABvd6+cmuW0CIbPL0rnVbQEoYgvns3ltAjaQefnBCXEDObIfU4EJcQAsViImmhlxAm6OIL/KKXEAsm0znZOxcQGQIW4CM5VxAGYY1Up4aXUAnNE2ShBZdQHiTI1PvLF1AMZYVQGA/XUDIJm9IHmVdQJa8Gqx8111AUEpPU8biXUBAniUf481dQNu5paCL711AY5BSZDwyXkD817pyEH9eQC+xRamMkl5A6tvrWHIdX0BT2I4KQoJfQNteQXjOXF9A0rWfwQINX0B+q4wnCWlfQOjq9r3jJF9ArHQVe7JEX0AND5IiknZfQPpZmcFg3l5AmAxHm+jVXkCDWXtQFOxeQI5BdZ22e15AzKmWkc1BXkDsh5Mf65VeQC1NUIANo15A1iUkEQNtXkBakQWhTZFeQC9D97xSVF5AbcamC6AQXkBmZBcu8gheQPgVaFPCbV5AaFzNR0mmXkBgziXg9HVeQAZAn0yLf15AHx5A6F9kXkCmsungbVdeQEHCbtSKA15AiotYEbJ/XUDOB5f3a55dQGTHEH8Jul1A2p+nyayZXUCagBTLtv1cQCbcMg3fSF1A", "encoding": "base64", "path": ["y", "value"]}], "model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "LinesModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "LinesModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "Lines", "apply_clip": true, "close_path": false, "color": null, "colors": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"], "curves_subset": [], "display_legend": false, "enable_hover": true, "fill": "none", "fill_colors": [], "fill_opacities": [], "interactions": {"hover": "tooltip"}, "interpolation": "linear", "labels": [], "labels_visibility": "none", "line_style": "solid", "marker": null, "marker_size": 64, "opacities": [], "preserve_domain": {}, "scales": {"x": "IPY_MODEL_8b4505b141904b88acce00ea1a024337", "y": "IPY_MODEL_e71a2a4066ba4aea869a62d89aba2436"}, "scales_metadata": {"color": {"dimension": "color"}, "x": {"dimension": "x", "orientation": "horizontal"}, "y": {"dimension": "y", "orientation": "vertical"}}, "selected": null, "selected_style": {}, "stroke_width": 2.0, "tooltip": null, "tooltip_location": "mouse", "tooltip_style": {"opacity": 0.9}, "unselected_style": {}, "visible": true, "x": {"dtype": "float64", "shape": [150], "type": "date"}, "y": {"dtype": "float64", "shape": [150], "type": null}}}, "c57446c677354586b0be6aee11af093a": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "auto"}}, "c65151c5dabd494ebdf1fd5c819c99d8": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "center", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "auto"}}, "d41702f44f364a4cbcea3da834710b07": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e71a2a4066ba4aea869a62d89aba2436": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "LinearScaleModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "LinearScaleModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "LinearScale", "allow_padding": true, "max": null, "mid_range": 0.8, "min": null, "min_range": 0.6, "reverse": false, "stabilized": false}}, "ea2ee71063a54998ac1dd5c7432e62e0": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "LinearScaleModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "LinearScaleModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "LinearScale", "allow_padding": false, "max": 1.0, "mid_range": 0.8, "min": 0.0, "min_range": 0.6, "reverse": false, "stabilized": false}}, "eab1a61e24a24ae7a5e86a8362429732": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "left-sidebar", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "efb9aa78ce41424f89fa42c759cf56a1": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "f07f072072094f77a47739c3d482a73c": {"model_module": "bqplot", "model_module_version": "^0.5.30", "model_name": "AxisModel", "state": {"_model_module": "bqplot", "_model_module_version": "^0.5.30", "_model_name": "AxisModel", "_view_count": null, "_view_module": "bqplot", "_view_module_version": "^0.5.30", "_view_name": "Axis", "color": null, "grid_color": null, "grid_lines": "solid", "label": "", "label_color": null, "label_location": "middle", "label_offset": null, "num_ticks": null, "offset": {}, "orientation": "vertical", "scale": "IPY_MODEL_e71a2a4066ba4aea869a62d89aba2436", "side": null, "tick_format": null, "tick_rotate": 0, "tick_style": {}, "tick_values": null, "visible": true}}, "f6b077844f6d4cd6b96b9efc2470c6ec": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "cursor": "move"}}, "fb8f7f42741f4193bfec981a1d37adc3": {"model_module": "jupyter-leaflet", "model_module_version": "^0.14.0", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.14.0", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.14.0", "_view_name": "LeafletTileLayerView", "attribution": "Map data (c) <a href=\"https://openstreetmap.org\">OpenStreetMap</a> contributors", "base": false, "bottom": true, "detect_retina": false, "loading": false, "max_native_zoom": 18, "max_zoom": 18, "min_native_zoom": 0, "min_zoom": 1, "name": "owm", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms"], "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "tile_size": 256, "tms": false, "url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=PASTE_YOUR_OWM_API_KEY_HERE", "visible": true}}, "ff63ce0d84814ce384e8656841644ea1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": "right-sidebar", "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": "auto", "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "auto"}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ai"
+        },
+        kernelOptions: {
+            kernelName: "ai",
+            path: "./user-guide"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ai'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="11_embedding.html" title="previous page">Embedding Jupyter Widgets in Other Contexts than the Notebook</a>
+    <a class='right-next' id="next-link" href="test.html" title="next page">测试</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By xinetzone<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

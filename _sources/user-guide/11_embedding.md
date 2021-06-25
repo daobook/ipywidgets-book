@@ -1,3 +1,18 @@
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.10.3
+kernelspec:
+  display_name: ai
+  language: python
+  name: ai
+---
+
+(jupyter:embedding)=
 # Embedding Jupyter Widgets in Other Contexts than the Notebook
 
 参考：[Embedding Jupyter Widgets in Other Contexts than the Notebook](https://ipywidgets.readthedocs.io/en/latest/embedding.html)

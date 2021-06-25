@@ -96,7 +96,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
     <link rel="next" title="Using Interact" href="08_using-interact.html" />
-    <link rel="prev" title="Using Layout Templates" href="06_layout-templates.html" />
+    <link rel="prev" title="使用 Layout 模板" href="06_layout-templates.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -153,7 +153,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_widgets-list.html">
+    <a class="reference internal" href="02_widget-list.html">
      小部件清单
     </a>
    </li>
@@ -174,7 +174,7 @@ commentsRunWhenDOMLoaded(addUtterances);
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06_layout-templates.html">
-     Using Layout Templates
+     使用 Layout 模板
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -200,6 +200,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    <li class="toctree-l2">
     <a class="reference internal" href="11_embedding.html">
      Embedding Jupyter Widgets in Other Contexts than the Notebook
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="layout-example.html">
+     Weather map
     </a>
    </li>
    <li class="toctree-l2">
@@ -484,9 +489,8 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <p><span class="xref myst">Index</span> - [Back](Widget Styling.ipynb) - [Next](Widget Asynchronous.ipynb)</p>
-<div class="section" id="building-a-custom-widget-email-widget">
-<h1>Building a Custom Widget -  Email widget<a class="headerlink" href="#building-a-custom-widget-email-widget" title="永久链接至标题">¶</a></h1>
+  <div class="section" id="building-a-custom-widget-email-widget">
+<span id="jupyter-widget-custom"></span><h1>Building a Custom Widget -  Email widget<a class="headerlink" href="#building-a-custom-widget-email-widget" title="永久链接至标题">¶</a></h1>
 <p>参考：<a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Custom.html">Building a Custom Widget</a></p>
 <p>This tutorial shows how to build a simple email widget using the TypeScript widget cookiecutter: <a class="reference external" href="https://github.com/jupyter-widgets/widget-ts-cookiecutter">https://github.com/jupyter-widgets/widget-ts-cookiecutter</a></p>
 <p><img alt="end-result" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/custom-widget-result.png" /></p>
@@ -609,14 +613,14 @@ jupyter lab
 <h2>Implementing the widget<a class="headerlink" href="#implementing-the-widget" title="永久链接至标题">¶</a></h2>
 <p>The widget framework is built on top of the Comm framework (short for communication).  The Comm framework is a framework that allows the kernel to send/receive JSON messages to/from the front end (as seen below).</p>
 <p><img alt="Widget layer" src="https://media.githubusercontent.com/media/xinetzone/ipywidgets-media/main/images/WidgetArch.png" /></p>
-<p>To learn more about how the underlying Widget protocol works, check out the <span class="xref myst">Low Level Widget</span> documentation.</p>
+<p>To learn more about how the underlying Widget protocol works, check out the <a class="reference internal" href="09_widget-low-level.html#jupyter-widget-low-level"><span class="std std-ref">Low Level Widget</span></a> documentation.</p>
 <p>To create a custom widget, you need to define the widget both in the browser and in the Python kernel.</p>
 </div>
 <div class="section" id="python-kernel">
 <h2>Python Kernel<a class="headerlink" href="#python-kernel" title="永久链接至标题">¶</a></h2>
 <div class="section" id="domwidget-valuewidget-and-widget">
 <h3>DOMWidget, ValueWidget and Widget<a class="headerlink" href="#domwidget-valuewidget-and-widget" title="永久链接至标题">¶</a></h3>
-<p>To define a widget, you must inherit from the <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code>, <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code>, or <code class="docutils literal notranslate"><span class="pre">Widget</span></code> base class.  If you intend for your widget to be displayed, you'll want to inherit from <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code>.  If you intend for your widget to be used as an input for <span class="xref myst">interact</span>, you'll want to inherit from <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code>. Your widget should inherit from <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code> if it has a single obvious output (for example, the output of an <code class="docutils literal notranslate"><span class="pre">IntSlider</span></code> is clearly the current value of the slider).</p>
+<p>To define a widget, you must inherit from the <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code>, <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code>, or <code class="docutils literal notranslate"><span class="pre">Widget</span></code> base class.  If you intend for your widget to be displayed, you'll want to inherit from <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code>.  If you intend for your widget to be used as an input for <a class="reference internal" href="08_using-interact.html#jupyter-using-interact"><span class="std std-ref">interact</span></a>, you'll want to inherit from <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code>. Your widget should inherit from <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code> if it has a single obvious output (for example, the output of an <code class="docutils literal notranslate"><span class="pre">IntSlider</span></code> is clearly the current value of the slider).</p>
 <p>Both the <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code> and <code class="docutils literal notranslate"><span class="pre">ValueWidget</span></code> classes inherit from the <code class="docutils literal notranslate"><span class="pre">Widget</span></code> class. The <code class="docutils literal notranslate"><span class="pre">Widget</span></code> class is useful for cases in which the widget is not meant to be displayed directly in the notebook, but instead as a child of another rendering environment.  Here are some examples:</p>
 <ul class="simple">
 <li><p>If you wanted to create a <a class="reference external" href="https://threejs.org/">three.js</a> widget (three.js is a popular WebGL library), you would implement the rendering window as a <code class="docutils literal notranslate"><span class="pre">DOMWidget</span></code> and any 3D objects or lights meant to be rendered in that window as <code class="docutils literal notranslate"><span class="pre">Widget</span></code></p></li>
@@ -958,7 +962,6 @@ Syncing mutable types
 <li><p><a class="reference external" href="https://github.com/maartenbreddels/ipywebrtc">ipywebrtc</a>: WebRTC and MediaStream API in Jupyter</p></li>
 <li><p><a class="reference external" href="https://github.com/QuantStack/ipysheet">ipysheet</a>: Spreadsheet Widget</p></li>
 </ul>
-<p><span class="xref myst">Index</span> - [Back](Widget Styling.ipynb) - [Next](Widget Asynchronous.ipynb)</p>
 </div>
 </div>
 
@@ -971,23 +974,23 @@ Syncing mutable types
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "ai"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "ai",
             path: "./user-guide"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'ai'</script>
 
               </div>
               
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="06_layout-templates.html" title="previous page">Using Layout Templates</a>
+    <a class='left-prev' id="prev-link" href="06_layout-templates.html" title="previous page">使用 Layout 模板</a>
     <a class='right-next' id="next-link" href="08_using-interact.html" title="next page">Using Interact</a>
 
         </div>
