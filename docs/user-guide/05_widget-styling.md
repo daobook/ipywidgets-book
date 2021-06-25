@@ -12,7 +12,7 @@ kernelspec:
   name: ai
 ---
 
-(widget-styling)=
+(jupyter:widget-styling)=
 # 布局和样式
 
 参考：[Layout and Styling of Jupyter widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Styling.html#The-Flexbox-layout)
@@ -99,7 +99,7 @@ Jupyter 交互式小部件有一个 `layout` 属性，它暴露了许多影响�
 下面的例子展示了如何调整一个 `Button` 的大小，使其视图的高度为 `80px`，宽度为可用空间的 `50%`:
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Button, Layout
 
 b = Button(description='(50% width, 80px height) button',
@@ -114,7 +114,7 @@ b
 `layout` 属性可以在多个小部件之间共享并直接分配。
 
 
-```python
+```{code-cell} ipython3
 Button(description='Another button with the same layout', layout=b.layout)
 ```
 
@@ -127,7 +127,7 @@ Button(description='Another button with the same layout', layout=b.layout)
 您可能已经注意到，较长的描述会被截断。这是因为描述长度在默认情况下是固定的。
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import IntSlider
 
 IntSlider(description='A too long description')
@@ -140,7 +140,7 @@ IntSlider(description='A too long description')
 您可以更改描述的长度以适应描述文本。但是，这将使小部件本身更短。您可以通过使用小部件的样式调整描述宽度和小部件宽度来改变这两者。
 
 
-```python
+```{code-cell} ipython3
 style = {'description_width': 'initial'}
 IntSlider(description='A too long description', style=style)
 ```
@@ -152,7 +152,7 @@ IntSlider(description='A too long description', style=style)
 如果您需要更灵活的布局小部件和描述，您可以直接使用 `Label` 小部件。
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import HBox, Label
 
 HBox([Label('A too long description'), IntSlider()])
@@ -167,7 +167,7 @@ HBox([Label('A too long description'), IntSlider()])
 大多数核心小部件的默认高度和宽度都平铺在一起。这允许基于 `HBox` 和 `VBox` 助手函数的简单布局自然对齐：
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Button, HBox, VBox
 
 words = ['correct', 'horse', 'battery', 'staple']
@@ -186,7 +186,7 @@ HBox([left_box, right_box])
 小部件（如滑块和文本输入）有一个描述属性，可以呈现 Latex 方程。`Label` 小部件还显示 Latex 方程。
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import IntSlider, Label
 
 IntSlider(description=r'\(\int_0^t f\)')
@@ -197,7 +197,7 @@ IntSlider(description=r'\(\int_0^t f\)')
 
 
 
-```python
+```{code-cell} ipython3
 Label(value=r'\(e=mc^2\)')
 ```
 
@@ -313,7 +313,7 @@ By default, flex items are laid out in the source order. However, the `order` pr
 
 The `VBox` and `HBox` helper classes provide simple defaults to arrange child widgets in vertical and horizontal boxes. They are roughly equivalent to:
 
-```Python
+```{code-cell} ipython3
 def VBox(*pargs, **kwargs):
     """Displays multiple widgets vertically using the flexible box model."""
     box = Box(*pargs, **kwargs)
@@ -334,7 +334,7 @@ def HBox(*pargs, **kwargs):
 ### 例子
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Layout, Button, Box
 
 items_layout = Layout( width='auto')     # override the default width of the button to 'auto' to let the button grow
@@ -358,7 +358,7 @@ box
 `HBox` 中有三个按钮。flex 项可按其权重比例伸缩。
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Layout, Button, Box, VBox
 
 # Items flex proportionally to the weight and the left over space around the text
@@ -392,7 +392,7 @@ VBox([box_auto, box_0])
 表单是一个宽度为 50% 的 `VBox`。`VBox` 中的每一行都是一个 `HBox`，它用空格分隔内容。
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Layout, Button, Box, FloatText, Textarea, Dropdown, Label, IntSlider
 
 form_item_layout = Layout(
@@ -428,7 +428,7 @@ form
 #### 一个更高级的例子：旋转木马。
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Layout, Button, VBox, Label
 
 item_layout = Layout(height='100px', min_width='40px')
@@ -461,7 +461,7 @@ VBox([Label('Scroll horizontally:'), carousel])
  - `''`（默认）
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Button
 
 Button(description='Danger Button', button_style='danger')
@@ -478,7 +478,7 @@ Button(description='Danger Button', button_style='danger')
 但是，`style` 属性的属性是特定于每个小部件类型的。
 
 
-```python
+```{code-cell} ipython3
 b1 = Button(description='Custom color')
 b1.style.button_color = 'lightgreen'
 b1
@@ -491,7 +491,7 @@ b1
 您可以获得具有 `keys` 属性的小部件的样式属性列表。
 
 
-```python
+```{code-cell} ipython3
 b1.style.keys
 ```
 
@@ -513,7 +513,7 @@ b1.style.keys
 就像 `layout` 属性一样，小部件样式可以分配给其他小部件。
 
 
-```python
+```{code-cell} ipython3
 b2 = Button()
 b2.style = b1.style
 b2
@@ -526,7 +526,7 @@ b2
 小部件样式属性特定于每种小部件类型。
 
 
-```python
+```{code-cell} ipython3
 s1 = IntSlider(description='Blue handle')
 s1.style.handle_color = 'lightblue'
 s1
@@ -836,14 +836,14 @@ Examples:
 To set alignment for *all* the items in a grid, this behavior can also be set on the grid container via the `justify-items` property.
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Button, GridBox, Layout, ButtonStyle
 ```
 
 按名称摆放：
 
 
-```python
+```{code-cell} ipython3
 header  = Button(description='Header',
                  layout=Layout(width='auto', grid_area='header'),
                  style=ButtonStyle(button_color='lightblue'))
@@ -877,7 +877,7 @@ GridBox(children=[header, main, sidebar, footer],
 设置行、列模板和间隙
 
 
-```python
+```{code-cell} ipython3
 GridBox(children=[Button(layout=Layout(width='auto', height='auto'),
                          style=ButtonStyle(button_color='darkseagreen')) for i in range(9)
                  ],
@@ -929,7 +929,7 @@ In the example below an image is displayed inside a green box to demonstrate eac
 To keep the example uniform, define common code here.
 
 
-```python
+```{code-cell} ipython3
 from ipywidgets import Layout, Box, VBox, HBox, HTML, Image
 
 fit_options = ['contain', 'cover', 'fill', 'scale-down', 'none', None]
@@ -980,13 +980,13 @@ caption_size = 'h4'
 每一个的效果可以在下面的图片中看到。在每种情况下，图像都位于一个带有绿色边框的框中。原始图像是 600x300，图像中的网格框是正方形。因为图像比框宽，所以内容框就是容器的大小。
 
 
-```python
+```{code-cell} ipython3
 with open('images/gaussian_with_grid.png', 'rb') as f:
     im_600_300 = f.read()
 ```
 
 
-```python
+```{code-cell} ipython3
 boxes = []
 for fit in fit_options:
     ib = Image(value=im_600_300)
@@ -1015,7 +1015,7 @@ vb
 每一个的效果可以在下面的图片中看到。在每种情况下，图像都位于一个带有绿色边框的框中。原始图像是50x25，图像中的网格是正方形。
 
 
-```python
+```{code-cell} ipython3
 with open('images/gaussian_with_grid_tiny.png', 'rb') as f:
     im_50_25 = f.read()
 
@@ -1048,7 +1048,7 @@ It may be surprising, given the description of the values for `option_fit`, that
 If the width of the image's layout is set to `100%` it will fill the box in which it is placed. This example also illustrates the difference between `'contain'` and `'scale-down'`. The effect of `'scale-down'` is either the same as `'contain'` or `'none'`, whichever leads to the smaller displayed image. In this case, the smaller image comes from doing no fitting, so that is what is displayed.
 
 
-```python
+```{code-cell} ipython3
 boxes = []
 for fit in fit_options:
     ib = Image(value=im_50_25)
@@ -1108,7 +1108,7 @@ The effect of each is display below, once for an image smaller than the containe
 In the examples below the `object_fit` is set to `'none'` so that the image is not scaled.
 
 
-```python
+```{code-cell} ipython3
 object_fit = 'none'
 image_value = [im_600_300, im_50_25]
 horz_keywords = ['left', 'center', 'right']
@@ -1158,7 +1158,7 @@ The image is scaled first using the value of `object_fit` (which defaults to `fi
 Offsets can be specified from the bottom and/or right side by combining keywords and pixel offsets. For example, `right 10px bottom 20px` offsets the right side of the image 10px from the right edge of the container and the image bottom 20px from the bottom of the container.
 
 
-```python
+```{code-cell} ipython3
 object_fit = ['none', 'contain', 'fill', 'cover']
 offset = '20px 10px'
 image_value = [im_600_300]

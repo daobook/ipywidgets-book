@@ -11,3 +11,4 @@ jupyter-dash
 plotly
 chart-studio
 ipywidgets
+bqplot
