@@ -161,6 +161,6 @@ sphinx:
       #   - "https://xinetzone.github.io/matrix-theory/"
       #   - null
   extra_extensions:
-    - sphinx_click
+    - sphinx_click.ext
     - sphinx_inline_tabs
     - sphinx.ext.intersphinx
