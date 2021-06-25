@@ -1,15 +1,10 @@
 # 笔记本
 
 ```{div} w3-pale-green w3-card w3-padding w3-round-xlarge w3-margin-top
-本笔记本可以直接运行代码，且持续化集成和部署到 GitHub Pages。
-
-本项目的使用案例有：
-
-- [AI 世界|记录一些 AI 技术](https://xinetzone.github.io/ai-world/)
-- [Books with Jupyter（中文版）](https://xinetzone.github.io/jupyter-book-zh/intro.html)
+当使用交互式 {term}`ipywidgets` 时，笔记本就会活跃起来。用户可以控制他们的数据，并可以可视化数据中的变化。学习成为一种沉浸式的、有趣的体验。研究人员可以很容易地看到改变模型的输入如何影响结果。
 ```
 
-````{admonition} 本站目录
+````{admonition} 本站导航
 :class: tip, dropdown; w3-pale-blue w3-card-4 w3-padding w3-round-xlarge w3-margin-top
 
 ```{tableofcontents}
